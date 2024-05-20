@@ -11,12 +11,11 @@
     <FrameLayout
         android:id="@+id/welcomeFrame"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:padding="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -63,7 +62,7 @@
                 android:id="@+id/desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="20sp"
                 android:text="@string/desc"
                 android:textColor="@color/primary"
                 android:textSize="14dp"
@@ -98,23 +97,22 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="249dp"
+            android:layout_height="300dp"
+            android:layout_marginBottom="-20dp"
             android:background="@color/primary"
             android:padding="20dp"
-            android:layout_marginBottom="-20dp"
             app:cardBackgroundColor="@color/primary"
             app:cardCornerRadius="30dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:padding="20dp"
-                android:layout_height="match_parent">
-
+                android:layout_height="match_parent"
+                android:padding="20dp">
                 <TextView
                     android:id="@+id/desc3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_margin="16dp"
                     android:text="@string/choose_your_role"
                     android:textColor="@color/tertiary"
                     android:textSize="22sp"
@@ -123,7 +121,127 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                
+                <LinearLayout
+                    android:id="@+id/role"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    app:layout_constraintTop_toBottomOf="@id/desc3">
+
+                    <LinearLayout
+                        android:id="@+id/vlAdmin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        app:layout_constraintTop_toBottomOf="@id/desc3">
+
+                        <ImageView
+                            android:id="@+id/ivAdmin"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:contentDescription="@string/admin"
+                            android:src="@drawable/admin_icon"
+                            android:layout_gravity="center" />
+
+                        <TextView
+                            android:id="@+id/tvAdmin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/admin"
+                            android:textColor="@color/tertiary"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_gravity="center" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/vlSupplier"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        app:layout_constraintStart_toEndOf="@id/vlAdmin"
+                        app:layout_constraintTop_toBottomOf="@id/desc3">
+
+                        <ImageView
+                            android:id="@+id/ivSupplier"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:contentDescription="@string/supplier"
+                            android:src="@drawable/supplier_icon"
+                            app:layout_constraintHorizontal_bias="0.497"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/tvSupplier"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/supplier"
+                            android:textColor="@color/tertiary"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/vlSme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        app:layout_constraintStart_toEndOf="@id/vlSupplier"
+                        app:layout_constraintTop_toBottomOf="@id/desc3">
+
+                        <ImageView
+                            android:id="@+id/ivSme"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:contentDescription="@string/umkm_batik"
+                            android:src="@drawable/umkm_icon"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/tvSme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/umkm_batik"
+                            android:textColor="@color/tertiary"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/vlCustomer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        app:layout_constraintStart_toEndOf="@id/vlSme"
+                        app:layout_constraintTop_toBottomOf="@id/desc3">
+
+                        <ImageView
+                            android:id="@+id/ivCustomer"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:contentDescription="@string/konsumer"
+                            android:src="@drawable/visitor_icon"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/tvCustomer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/konsumer"
+                            android:textColor="@color/tertiary"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"/>
+                    </LinearLayout>
+                </LinearLayout>
 
                 <Button
                     android:id="@+id/registerButton"
@@ -133,9 +251,10 @@
                     android:layout_marginTop="16dp"
                     android:background="@color/secondary"
                     android:text="@string/get_started"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/desc3" />
+                    app:layout_constraintTop_toBottomOf="@id/role" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </FrameLayout>

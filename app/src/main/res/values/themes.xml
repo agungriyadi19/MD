@@ -12,6 +12,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:navigationBarColor">@color/primary</item>
+
     </style>
 
     <style name="Theme.SMETraceCare.Fullscreen" parent="Theme.SMETraceCare">

@@ -60,4 +60,22 @@
     <string name="desc">Empowering Small Enterprises, Ensuring Care at Every step.</string>
     <string name="get_started">Get Started!</string>
     <string name="let_s_go_one_step_further">Let\'s go one step further!</string>
+    <string name="admin">Admin</string>
+    <string name="supplier">Supplier</string>
+    <string name="umkm_batik">UMKM Batik</string>
+    <string name="konsumer">Konsumer</string>
+    <string name="login">Login</string>
+    <string name="result">result</string>
+    <string name="eightCharPass">Minimal 8 Karakter</string>
+    <string name="emptyName">Nama Kosong</string>
+    <string name="noMatchPass">Password Tidak Sama</string>
+    <string name="register">Register</string>
+    <string name="hintName">Masukan Nama Anda</string>
+    <string name="hintEmail">Masukan Email Anda</string>
+    <string name="hintPassword">Masukan Kata Sandi Anda</string>
+    <string name="confirm_password">Konfirmasi Kata Sandi</string>
+    <string name="show_password">Show Password</string>
+    <string name="wrongEmailFormat">Format Email Salah</string>
+    <string name="emailTaken">Email Sudah digunakan</string>
+    <string name="dont_have_asccount">Don\'t have account?</string>
 </resources>

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.login.LoginActivity">
+    tools:context=".ui.login.LoginActivity"
+    tools:ignore="ExtraText">
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -13,16 +14,14 @@
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.409" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/borderLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="95dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="0dp"
@@ -42,52 +41,66 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/login"
+        android:id="@+id/register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/login"
+        android:text="@string/register"
         android:textAlignment="center"
         android:textColor="@color/primary"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/progressBar"
         app:layout_constraintTop_toBottomOf="@+id/borderLogo"
+        app:layout_constraintVertical_bias="0.255"
         tools:ignore="MissingConstraints,SpUsage"
-        tools:layout_editor_absoluteX="168dp" />
-    <TextView
-        android:id="@+id/result"
-        android:textColor="@color/error"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <com.example.smetracecare.cv.NameCustomView
+        android:id="@+id/ed_register_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="@string/result"
-        android:layout_marginTop="4dp"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/login"
-        android:visibility="gone"
-        />
+        android:hint="@string/hintName"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/ed_register_email"
+        app:layout_constraintTop_toBottomOf="@id/register"/>
+
     <com.example.smetracecare.cv.EmailCustomView
-        android:id="@+id/ed_login_email"
+        android:id="@+id/ed_register_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
         android:hint="@string/hintEmail"
-        app:layout_constraintBottom_toTopOf="@+id/ed_login_password"
-        app:layout_constraintTop_toBottomOf="@+id/result"
+        app:layout_constraintTop_toBottomOf="@+id/ed_register_name"
+        app:layout_constraintEnd_toEndOf="@id/ed_register_name"
+        app:layout_constraintStart_toStartOf="@id/ed_register_name"
         app:layout_constraintVertical_bias="1.0"
         tools:layout_editor_absoluteX="30dp" />
 
     <com.example.smetracecare.cv.PasswordCustomView
-        android:id="@+id/ed_login_password"
+        android:id="@+id/ed_register_password"
         android:layout_marginHorizontal="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
         android:hint="@string/hintPassword"
-        app:layout_constraintBottom_toTopOf="@+id/showPassword"
+        app:layout_constraintEnd_toEndOf="@id/ed_register_email"
+        app:layout_constraintStart_toStartOf="@id/ed_register_email"
+        app:layout_constraintTop_toBottomOf="@+id/ed_register_email"
         app:layout_constraintHorizontal_bias="1.0"/>
+
+    <com.example.smetracecare.cv.MatchPassCustomView
+        android:id="@+id/ed_register_password_confirm"
+        android:layout_marginHorizontal="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="@string/confirm_password"
+        app:layout_constraintEnd_toEndOf="@id/ed_register_password"
+        app:layout_constraintStart_toStartOf="@id/ed_register_password"
+        app:layout_constraintTop_toBottomOf="@id/ed_register_password" />
+
 
     <CheckBox
         android:id="@+id/showPassword"
@@ -96,46 +109,34 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:alpha="0"
+        android:textColor="@color/primary"
         android:text="@string/show_password"
-        app:layout_constraintBottom_toTopOf="@+id/loginButton"
+        app:layout_constraintTop_toBottomOf="@+id/ed_register_password_confirm"
         app:layout_constraintHorizontal_bias="0.0"
         tools:alpha="1" />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/registerButton"
         android:layout_marginHorizontal="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="@string/login"
-        app:layout_constraintBottom_toTopOf="@+id/tv_not_register"
+        android:text="@string/register"
+        app:layout_constraintTop_toBottomOf="@+id/showPassword"
         app:layout_constraintHorizontal_bias="0.0"/>
 
     <TextView
-        android:id="@+id/tv_not_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="130dp"
-        android:alpha="0"
-        android:text="@string/dont_have_asccount"
-        android:textColor="@color/primary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/loginButton"
-        app:layout_constraintHorizontal_bias="0.392"
-        app:layout_constraintStart_toStartOf="@+id/loginButton"
-        tools:alpha="1" />
-
-    <TextView
-        android:id="@+id/button_register"
+        android:id="@+id/button_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="3dp"
         android:alpha="0"
         tools:alpha="1"
-        android:text="@string/register"
-        android:textColor="@color/primary"
+        android:text="@string/back"
+        android:textColor="@color/md_theme_onPrimaryContainer"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/tv_not_register"
-        app:layout_constraintTop_toTopOf="@+id/tv_not_register" />
+        app:layout_constraintTop_toBottomOf="@+id/registerButton"
+        app:layout_constraintStart_toStartOf="@+id/registerButton"
+        app:layout_constraintEnd_toEndOf="@+id/registerButton" />
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>
