@@ -209,7 +209,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/umkm_batik"
                             android:textColor="@color/tertiary"
-                            android:textSize="18sp"
+                            android:textSize="15sp"
                             android:textStyle="bold"
                             android:layout_gravity="center"/>
                     </LinearLayout>
@@ -244,7 +244,7 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/registerButton"
+                    android:id="@+id/startedButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"

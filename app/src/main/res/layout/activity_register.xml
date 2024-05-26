@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.login.LoginActivity"
+    tools:context=".ui.RegisterActivity"
     tools:ignore="ExtraText">
 
     <ProgressBar
@@ -133,7 +133,6 @@
         android:alpha="0"
         tools:alpha="1"
         android:text="@string/back"
-        android:textColor="@color/md_theme_onPrimaryContainer"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/registerButton"
         app:layout_constraintStart_toStartOf="@+id/registerButton"
