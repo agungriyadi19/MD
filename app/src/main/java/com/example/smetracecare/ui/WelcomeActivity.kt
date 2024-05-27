@@ -11,7 +11,7 @@ import com.example.smetracecare.databinding.ActivityWelcomeBinding
 
 class WelcomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWelcomeBinding
-    private lateinit var role: String
+    lateinit var role: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWelcomeBinding.inflate(layoutInflater)

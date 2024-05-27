@@ -28,7 +28,7 @@ class NameCustomView: AppCompatEditText, View.OnFocusChangeListener {
     private fun init() {
         onFocusChangeListener = this
         inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
-        background = ContextCompat.getDrawable(context, R.drawable.bgedittext)
+        background = ContextCompat.getDrawable(context, R.drawable.textbox_background)
     }
 
     override fun onFocusChange(v: View?, focus: Boolean) {

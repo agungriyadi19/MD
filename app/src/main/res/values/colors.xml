@@ -146,6 +146,7 @@
     <color name="tertiary">#D4EDF1</color>
     <color name="error">#FF0000</color>
     <color name="white2">#F9F9F9</color>
+    <color name="grey">#9DA3AA</color>
 
     <color name="transparent">#00111827</color>
 </resources>

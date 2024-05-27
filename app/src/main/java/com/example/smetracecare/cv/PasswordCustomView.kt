@@ -39,7 +39,7 @@ class PasswordCustomView : AppCompatEditText, View.OnTouchListener{
     }
 
     private fun init() {
-        background = ContextCompat.getDrawable(context, R.drawable.bgedittext)
+        background = ContextCompat.getDrawable(context, R.drawable.textbox_background)
         transformationMethod = PasswordTransformationMethod.getInstance()
 
         addTextChangedListener(object : TextWatcher {

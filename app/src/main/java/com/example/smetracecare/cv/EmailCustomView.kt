@@ -33,7 +33,7 @@ class EmailCustomView : AppCompatEditText, View.OnFocusChangeListener {
     private fun init() {
         onFocusChangeListener = this
         inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
-        background = ContextCompat.getDrawable(context, R.drawable.bgedittext)
+        background = ContextCompat.getDrawable(context, R.drawable.textbox_background)
         addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 

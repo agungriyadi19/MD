@@ -74,7 +74,10 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
+        android:paddingHorizontal="20dp"
         android:hint="@string/hintEmail"
+        android:textColorHint="@color/grey"
+        android:textColor="@color/primary"
         app:layout_constraintBottom_toTopOf="@+id/ed_login_password"
         app:layout_constraintTop_toBottomOf="@+id/result"
         app:layout_constraintVertical_bias="1.0"
@@ -83,9 +86,12 @@
     <com.example.smetracecare.cv.PasswordCustomView
         android:id="@+id/ed_login_password"
         android:layout_marginHorizontal="30dp"
+        android:paddingHorizontal="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:textColorHint="@color/grey"
+        android:textColor="@color/primary"
         android:hint="@string/hintPassword"
         app:layout_constraintBottom_toTopOf="@+id/showPassword"
         app:layout_constraintHorizontal_bias="1.0"/>

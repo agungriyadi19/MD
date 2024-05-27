@@ -29,7 +29,7 @@ class MatchPassCustomView: AppCompatEditText, View.OnFocusChangeListener {
     }
     private fun init() {
         transformationMethod = PasswordTransformationMethod.getInstance()
-        background = ContextCompat.getDrawable(context, R.drawable.bgedittext)
+        background = ContextCompat.getDrawable(context, R.drawable.textbox_background)
 
         addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}

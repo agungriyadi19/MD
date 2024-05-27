@@ -88,4 +88,27 @@
     <string name="cancel">Batal\n</string>
     <string name="back">back</string>
     <string name="upload_product_umkm">Upload Produk</string>
+    <string name="profile">Profile</string>
+    <string name="add_item">Add Item</string>
+    <string name="supplier_name">Supplier Name</string>
+    <string name="item_name">Item Name</string>
+    <string name="item_image">Item Image</string>
+    <string name="detailProduct">Detail Product</string>
+    <string name="productImage">Gambar Produk</string>
+    <string name="productDate">Product Date</string>
+    <string name="productDescription">Product Description</string>
+    <string name="previewImage">Preview Image</string>
+    <string name="back_button">Back Button</string>
+    <string name="addProduct">Tambah Produk</string>
+    <string name="productType">Jenis Produk</string>
+    <string name="productKode">Kode Produk</string>
+    <string name="productDesc">Deskripsi</string>
+    <string name="space" />
+    <string name="supplierProfile">Profile Supplier</string>
+    <string name="profileImage">My Profile</string>
+    <string-array name="options_array">
+        <item>Option 1</item>
+        <item>Option 2</item>
+        <item>Option 3</item>
+    </string-array>
 </resources>

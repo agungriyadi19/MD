@@ -1,17 +1,10 @@
 package com.example.smetracecare.ui
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.Toast
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
-import androidx.lifecycle.ViewModelProvider
 import androidx.appcompat.app.AppCompatActivity
-import com.example.smetracecare.R
 import com.example.smetracecare.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
