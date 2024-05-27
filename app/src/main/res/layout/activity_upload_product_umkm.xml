@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageButton_upload_umkm" />
 
     <TextView
-        android:id="@+id/register"
+        android:id="@+id/tv_upload_umkm"
         android:layout_width="297dp"
         android:layout_height="39dp"
         android:layout_marginBottom="260dp"
@@ -148,7 +148,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.165"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_upload_umkm" />
 
     <TextView
         android:id="@+id/tv_PriceProduct"
@@ -167,10 +167,10 @@
         android:id="@+id/button_upload_umkm"
         android:layout_width="300dp"
         android:layout_height="49dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:text="@string/uploadProduct"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_descrriptions" />
 
