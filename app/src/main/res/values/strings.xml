@@ -78,22 +78,13 @@
     <string name="wrongEmailFormat">Format Email Salah</string>
     <string name="emailTaken">Email Sudah digunakan</string>
     <string name="dont_have_asccount">Don\'t have account?</string>
-    <string name="profile">Profile</string>
-    <string name="add_item">Add Item</string>
-    <string name="supplier_name">Supplier Name</string>
-    <string name="item_name">Item Name</string>
-    <string name="item_image">Item Image</string>
-    <string name="detailProduct">Detail Product</string>
-    <string name="productName">Product Name</string>
-    <string name="productImage">Product Image</string>
-    <string name="productDate">Product Date</string>
-    <string name="productDescription">Product Description</string>
-    <string name="back">Back</string>
-    <string name="previewImage">Preview Image</string>
-    <string name="back_button">Back Button</string>
-    <string-array name="options_array">
-        <item>Option 1</item>
-        <item>Option 2</item>
-        <item>Option 3</item>
-    </string-array>
+    <string name="upload_product_supplier">Upload Product\n</string>
+    <string name="productName">Nama Produk</string>
+    <string name="price">Harga Produk</string>
+    <string name="kodeProduk">Kode Produk\n</string>
+    <string name="uploadImage_umkm">Unggah Gambar</string>
+    <string name="description">Deskripsi Produk</string>
+    <string name="uploadProduct">Unggah Produk</string>
+    <string name="cancel">Batal\n</string>
+    <string name="back">back</string>
 </resources>
