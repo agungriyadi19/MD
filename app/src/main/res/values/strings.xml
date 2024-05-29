@@ -117,4 +117,8 @@
         <item>Option 2</item>
         <item>Option 3</item>
     </string-array>
+
+    <string name="titleScan_page">Scan Produk Kamu</string>
+    <string name="scanQRCode">Scan QR Code</string>
+    <string name="scanBatik">Scan Motif Batik</string>
 </resources>
