@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tertiary"
+    tools:context=".ui.DetailProductUmkmActivity">
+
+
+    <TextView
+        android:id="@+id/tv_detail_produk_umkm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="@string/detailProduk_umkm"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_detail_produk_umkm"
+        android:layout_width="393dp"
+        android:layout_height="232dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detail_produk_umkm"
+        app:srcCompat="@drawable/ic_image" />
+
+    <TextView
+        android:id="@+id/tv_hargaJual_umkm"
+        android:layout_width="85dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/hargaJual_umkm"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_namaProduk_umkm" />
+
+    <TextView
+        android:id="@+id/tv_cancel_detail_produk_umkm"
+        android:layout_width="38dp"
+        android:layout_height="20dp"
+        android:layout_marginBottom="148dp"
+        android:text="@string/cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView9"
+        app:layout_constraintStart_toStartOf="@+id/tv_descriptions_umkm"
+        app:layout_constraintTop_toBottomOf="@+id/iv_detail_produk_umkm"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/ans_hargaJual_umkm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/hargaJualUmkm"
+        app:layout_constraintStart_toEndOf="@+id/tv_hargaJual_umkm"
+        app:layout_constraintTop_toBottomOf="@+id/ans_namaProduk_umkm" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="123dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/descriptionUmkm"
+        app:layout_constraintStart_toEndOf="@+id/tv_descriptions_umkm"
+        app:layout_constraintTop_toBottomOf="@+id/ans_kodeBarang_umkm" />
+
+    <TextView
+        android:id="@+id/ans_kodeBarang_umkm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/kodeBarangUmkm"
+        app:layout_constraintStart_toEndOf="@+id/tv_kodeProduk_umkm"
+        app:layout_constraintTop_toBottomOf="@+id/ans_hargaJual_umkm" />
+
+    <TextView
+        android:id="@+id/ans_namaProduk_umkm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/namaProdukUmkm"
+        app:layout_constraintStart_toEndOf="@+id/tv_namaProduk_umkm"
+        app:layout_constraintTop_toBottomOf="@+id/iv_detail_produk_umkm" />
+
+    <TextView
+        android:id="@+id/tv_descriptions_umkm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/descriptions_umkm"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_kodeProduk_umkm" />
+
+    <TextView
+        android:id="@+id/tv_kodeProduk_umkm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/kodeBarang_umkm"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_hargaJual_umkm" />
+
+    <TextView
+        android:id="@+id/tv_namaProduk_umkm"
+        android:layout_width="102dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/namaProduk_umkm"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_detail_produk_umkm" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

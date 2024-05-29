@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-feature android:name="android.hardware.camera" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
 
     <application
@@ -18,7 +22,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SMETraceCare"
-        tools:targetApi="31" >
+        tools:targetApi="31">
+        <activity
+            android:name=".ui.DetailProductUmkmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ScanConsumerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.UploadPembatikUmkmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.UploadProductUmkmActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.SupplierHomeActivity"
             android:exported="false"
@@ -49,7 +65,7 @@
             android:label="@string/title_activity_login" />
         <activity
             android:name=".ui.SplashScreenActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
