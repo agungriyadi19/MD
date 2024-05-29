@@ -122,12 +122,13 @@
     <string name="scanQRCode">Scan QR Code</string>
     <string name="scanBatik">Scan Motif Batik</string>
     <string name="detailProduk_umkm">Detail Produk</string>
-    <string name="namaProduk_umkm">Nama Produk :</string>
-    <string name="hargaJual_umkm">Harga Jual :</string>
-    <string name="kodeBarang_umkm">Kode Barang   :</string>
-    <string name="descriptions_umkm">Deskripsi   :</string>
+    <string name="namaProduk_umkm">Nama Produk</string>
+    <string name="hargaJual_umkm">Harga Jual</string>
+    <string name="kodeBarang_umkm">Kode Barang</string>
+    <string name="descriptions_umkm">Deskripsi</string>
     <string name="descriptionUmkm">Deskripsi Produk\n</string>
     <string name="kodeBarangUmkm">Kode Barang</string>
     <string name="hargaJualUmkm">Harga Jual</string>
     <string name="namaProdukUmkm">Nama Produk</string>
+    <string name="titikdua">:</string>
 </resources>
