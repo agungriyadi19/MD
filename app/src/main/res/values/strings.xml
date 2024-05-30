@@ -80,14 +80,20 @@
     <string name="dont_have_asccount">Don\'t have account?</string>
     <string name="upload_product_supplier">Upload Product\n</string>
     <string name="productName">Nama Produk</string>
+    <string name="NamaPembatik">Nama Pembatik</string>
     <string name="price">Harga Produk</string>
+    <string name="jenisKelamin">Jenis Kelamin</string>
     <string name="kodeProduk">Kode Produk\n</string>
+    <string name="namaUMKM">Nama UMKM\n</string>
     <string name="uploadImage_umkm">Unggah Gambar</string>
     <string name="description">Deskripsi</string>
+    <string name="description_pembatik">Deskripsi Pembatik</string>
     <string name="uploadProduct">Unggah Produk</string>
+    <string name="uploadPembatik">Unggah Pembatik</string>
     <string name="cancel">Batal\n</string>
     <string name="back">back</string>
     <string name="upload_product_umkm">Upload Produk</string>
+    <string name="upload_pembatik_umkm">Upload Pembatik</string>
     <string name="profile">Profile</string>
     <string name="add_item">Add Item</string>
     <string name="supplier_name">Supplier Name</string>
@@ -119,4 +125,18 @@
         <item>Option 2</item>
         <item>Option 3</item>
     </string-array>
+
+    <string name="titleScan_page">Scan Produk Kamu</string>
+    <string name="scanQRCode">Scan QR Code</string>
+    <string name="scanBatik">Scan Motif Batik</string>
+    <string name="detailProduk_umkm">Detail Produk</string>
+    <string name="namaProduk_umkm">Nama Produk</string>
+    <string name="hargaJual_umkm">Harga Jual</string>
+    <string name="kodeBarang_umkm">Kode Barang</string>
+    <string name="descriptions_umkm">Deskripsi</string>
+    <string name="descriptionUmkm">Deskripsi Produk\n</string>
+    <string name="kodeBarangUmkm">Kode Barang</string>
+    <string name="hargaJualUmkm">Harga Jual</string>
+    <string name="namaProdukUmkm">Nama Produk</string>
+    <string name="titikdua">:</string>
 </resources>
