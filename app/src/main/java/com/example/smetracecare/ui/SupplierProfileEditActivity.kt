@@ -16,7 +16,7 @@ class SupplierProfileEditActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnBack.setOnClickListener() {
-            startActivity(Intent(this, SupplierProfileEditActivity::class.java))
+            startActivity(Intent(this, SupplierProfileActivity::class.java))
         }
     }
 

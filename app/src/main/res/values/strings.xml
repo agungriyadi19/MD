@@ -83,7 +83,7 @@
     <string name="price">Harga Produk</string>
     <string name="kodeProduk">Kode Produk\n</string>
     <string name="uploadImage_umkm">Unggah Gambar</string>
-    <string name="description">Deskripsi Produk</string>
+    <string name="description">Deskripsi</string>
     <string name="uploadProduct">Unggah Produk</string>
     <string name="cancel">Batal\n</string>
     <string name="back">back</string>
@@ -96,7 +96,7 @@
     <string name="detailProduct">Detail Product</string>
     <string name="productImage">Gambar Produk</string>
     <string name="productDate">Product Date</string>
-    <string name="productDescription">Product Description</string>
+    <string name="productDescription">Deskripsi Produk</string>
     <string name="previewImage">Preview Image</string>
     <string name="back_button">Back Button</string>
     <string name="addProduct">Tambah Produk</string>
@@ -106,6 +106,14 @@
     <string name="space" />
     <string name="supplierProfile">Profile Supplier</string>
     <string name="profileImage">My Profile</string>
+    <string name="editProduct">Edit Profile</string>
+    <string name="colon">:</string>
+    <string name="name">Nama</string>
+    <string name="email">Email</string>
+    <string name="address">Alamat</string>
+    <string name="phone">Nomor Telepon</string>
+    <string name="save">Simpan</string>
+    <string name="editProfile">Edit Profile</string>
     <string-array name="options_array">
         <item>Option 1</item>
         <item>Option 2</item>

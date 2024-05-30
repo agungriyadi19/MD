@@ -15,7 +15,11 @@ class SupplierProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnBack.setOnClickListener() {
-            startActivity(Intent(this, SupplierProfileActivity::class.java))
+            startActivity(Intent(this, SupplierHomeActivity::class.java))
+        }
+
+        binding.editProfileButton.setOnClickListener() {
+            startActivity(Intent(this, SupplierProfileEditActivity::class.java))
         }
 
     }

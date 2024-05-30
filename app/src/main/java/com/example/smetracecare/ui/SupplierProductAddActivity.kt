@@ -1,6 +1,7 @@
 package com.example.smetracecare.ui
 
 import android.R
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -19,6 +20,9 @@ class SupplierProductAddActivity : AppCompatActivity() {
         binding = ActivitySupplierProductAddBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btnBack.setOnClickListener() {
+            startActivity(Intent(this, SupplierHomeActivity::class.java))
+        }
 //        val spinner = binding.spinner
 //        val adapter = ArrayAdapter.createFromResource(
 //            this,
