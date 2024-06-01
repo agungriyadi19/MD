@@ -139,4 +139,7 @@
     <string name="hargaJualUmkm">Harga Jual</string>
     <string name="namaProdukUmkm">Nama Produk</string>
     <string name="titikdua">:</string>
-</resources>
+    <string name="login_supplier">Login Supplier</string>
+    <string name="login_sme">Login UMKM Batik</string>
+    <string name="register_supplier">Register Supplier</string>
+    <string name="register_sme">Register UMKM Batik</string></resources>
