@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".ui.ScanConsumerActivity"
     android:background="@color/tertiary">
 
     <TextView
@@ -15,22 +16,11 @@
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/scanButton_batik"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="@color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_scanButton_qecode"
-        app:srcCompat="@drawable/ic_scan" />
 
     <ImageButton
         android:id="@+id/scanButton_barcode"
@@ -45,28 +35,30 @@
         app:srcCompat="@drawable/ic_scan" />
 
     <TextView
-        android:id="@+id/tv_scanButton_qecode"
+        android:id="@+id/tv_scanButton_barcode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/scanQRCode"
         android:textStyle="bold"
         android:textSize="16sp"
+        android:textColor="@color/primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scanButton_barcode" />
 
-    <TextView
-        android:id="@+id/cancelScan"
-        android:layout_width="40dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="44dp"
-        android:text="@string/cancel"
-        android:textSize="16sp"
+    <ImageButton
+        android:id="@+id/scanButton_batik"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_scanButton_batik" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_scanButton_barcode"
+        app:srcCompat="@drawable/ic_scan" />
+
 
     <TextView
         android:id="@+id/tv_scanButton_batik"
@@ -75,8 +67,23 @@
         android:text="@string/scanBatik"
         android:textStyle="bold"
         android:textSize="16sp"
+        android:textColor="@color/primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scanButton_batik" />
+
+    <TextView
+        android:id="@+id/cancelScan"
+        android:layout_width="40dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="44dp"
+        android:text="@string/cancel"
+        android:textSize="16sp"
+        android:textColor="@color/primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_scanButton_batik" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -76,4 +76,14 @@ dependencies {
     implementation(libs.androidx.preference)
     implementation (libs.glide)
 
+    // CameraX
+    implementation(libs.androidx.camera.camera2)
+    implementation(libs.androidx.camera.lifecycle)
+    implementation(libs.androidx.camera.view)
+
+    // [ML Kit barcode scanning API] (https://developers.google.com/ml-kit/vision/barcode-scanning/android)
+
+    implementation(libs.barcode.scanning)
+
+
 }
