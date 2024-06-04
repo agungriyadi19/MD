@@ -26,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
 
         val dataStoreViewModel = ViewModelProvider(this, ViewModelFactory(preferences))[DataStoreViewModel::class.java]
         dataStoreViewModel.getRole().observe(this) { data ->
-            if (data == "Supplier") {
+            if (data == "supplier") {
                 Glide.with(this)
                     .load(R.drawable.supplier_icon)
                     .into(binding.logo)
@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
                     login.text = getString(R.string.login_supplier)
                 }
             }
-            if (data == "SME") {
+            if (data == "umkm") {
                 Glide.with(this)
                     .load(R.drawable.umkm_icon)
                     .into(binding.logo)
@@ -68,11 +68,11 @@ class LoginActivity : AppCompatActivity() {
 
             val dataStoreViewModel = ViewModelProvider(this, ViewModelFactory(preferences))[DataStoreViewModel::class.java]
             dataStoreViewModel.getRole().observe(this) { data ->
-                if (data == "Supplier") {
+                if (data == "supplier") {
                     val intent = Intent(this@LoginActivity, SupplierHomeActivity::class.java)
                     startActivity(intent)
                 }
-                if (data == "SME") {
+                if (data == "umkm") {
                     // UMKM Page
                     val intent = Intent(this@LoginActivity, SupplierHomeActivity::class.java)
                     startActivity(intent)

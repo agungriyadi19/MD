@@ -1,6 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+
+    id ("kotlin-parcelize")
+    id("com.google.devtools.ksp")
+    id ("kotlin-kapt")
 }
 
 android {
@@ -16,7 +20,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "BASE_URL", "\"https://story-api.dicoding.dev/v1/\"")
+        buildConfigField("String", "BASE_URL", "\"https://trace-backend-hrnw2ucl3q-et.a.run.app/\"")
     }
 
     buildTypes {

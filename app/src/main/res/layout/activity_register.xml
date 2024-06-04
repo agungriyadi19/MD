@@ -1,152 +1,317 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.RegisterActivity"
     android:background="@color/tertiary"
-    tools:ignore="ExtraText">
+    tools:context=".ui.RegisterActivity">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        tools:context=".ui.RegisterActivity">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/borderLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="0dp"
-        app:cardBackgroundColor="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:contentDescription="@string/logoDesc"
-            android:src="@drawable/logo"
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-    </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/register"
-        android:textAlignment="center"
-        android:textColor="@color/primary"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/progressBar"
-        app:layout_constraintTop_toBottomOf="@+id/borderLogo"
-        app:layout_constraintVertical_bias="0.255"
-        tools:ignore="MissingConstraints,SpUsage"
-        tools:layout_editor_absoluteX="0dp" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/borderLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <com.example.smetracecare.cv.NameCustomView
-        android:id="@+id/ed_register_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/hintName"
-        android:textColorHint="@color/grey"
-        android:textColor="@color/primary"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="16dp"
-        android:paddingHorizontal="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/ed_register_email"
-        app:layout_constraintTop_toBottomOf="@id/register"/>
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:contentDescription="@string/logoDesc"
+                android:src="@drawable/logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.cardview.widget.CardView>
 
-    <com.example.smetracecare.cv.EmailCustomView
-        android:id="@+id/ed_register_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="20dp"
-        android:hint="@string/hintEmail"
-        android:textColorHint="@color/grey"
-        android:textColor="@color/primary"
-        android:paddingHorizontal="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/ed_register_name"
-        app:layout_constraintEnd_toEndOf="@id/ed_register_name"
-        app:layout_constraintStart_toStartOf="@id/ed_register_name"
-        app:layout_constraintVertical_bias="1.0"
-        tools:layout_editor_absoluteX="30dp" />
-
-    <com.example.smetracecare.cv.PasswordCustomView
-        android:id="@+id/ed_register_password"
-        android:layout_marginHorizontal="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="@string/hintPassword"
-        android:textColorHint="@color/grey"
-        android:textColor="@color/primary"
-        android:paddingHorizontal="20dp"
-        app:layout_constraintEnd_toEndOf="@id/ed_register_email"
-        app:layout_constraintStart_toStartOf="@id/ed_register_email"
-        app:layout_constraintTop_toBottomOf="@+id/ed_register_email"
-        app:layout_constraintHorizontal_bias="1.0"/>
-
-    <com.example.smetracecare.cv.MatchPassCustomView
-        android:id="@+id/ed_register_password_confirm"
-        android:layout_marginHorizontal="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
-        android:layout_marginTop="16dp"
-        android:hint="@string/confirm_password"
-        android:textColorHint="@color/grey"
-        android:textColor="@color/primary"
-        app:layout_constraintEnd_toEndOf="@id/ed_register_password"
-        app:layout_constraintStart_toStartOf="@id/ed_register_password"
-        app:layout_constraintTop_toBottomOf="@id/ed_register_password" />
+        <TextView
+            android:id="@+id/register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/register"
+            android:textAlignment="center"
+            android:textColor="@color/primary"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/borderLogo"
+            tools:ignore="MissingConstraints,SpUsage"
+            tools:layout_editor_absoluteX="0dp" />
 
 
-    <CheckBox
-        android:id="@+id/showPassword"
-        android:layout_marginHorizontal="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:textColor="@color/primary"
-        android:text="@string/show_password"
-        app:layout_constraintTop_toBottomOf="@+id/ed_register_password_confirm"
-        app:layout_constraintHorizontal_bias="0.0" />
+        <TextView
+            android:id="@+id/tv_register_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/name"
+            android:textColor="@color/primary"
+            android:textSize="14sp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/register" />
 
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_marginHorizontal="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="@string/register"
-        android:backgroundTint="@color/secondary"
-        app:layout_constraintTop_toBottomOf="@+id/showPassword"
-        app:layout_constraintHorizontal_bias="0.0"/>
+        <EditText
+            android:id="@+id/ed_register_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            android:autofillHints="Description"
+            android:background="@drawable/textbox_background"
+            android:hint="@string/hintName"
+            android:inputType="text"
+            android:paddingHorizontal="20dp"
+            android:textColor="@color/primary"
+            android:textColorHint="@color/grey"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/tv_register_name"
+            tools:ignore="LabelFor,RtlHardcoded" />
 
-    <TextView
-        android:id="@+id/button_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:text="@string/back"
-        android:textStyle="bold"
-        android:textColor="@color/primary"
-        app:layout_constraintTop_toBottomOf="@+id/registerButton"
-        app:layout_constraintStart_toStartOf="@+id/registerButton"
-        app:layout_constraintEnd_toEndOf="@+id/registerButton" />
+        <TextView
+            android:id="@+id/tv_register_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/email"
+            android:textColor="@color/primary"
+            android:textSize="14sp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ed_register_name" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/ed_register_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            android:autofillHints="Description"
+            android:background="@drawable/textbox_background"
+            android:hint="@string/hintEmail"
+            android:inputType="textEmailAddress"
+            android:paddingHorizontal="20dp"
+            android:textColor="@color/primary"
+            android:textColorHint="@color/grey"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/tv_register_email"
+            tools:ignore="LabelFor,RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/tv_register_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/phone"
+            android:textColor="@color/primary"
+            android:textSize="14sp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ed_register_email" />
+
+        <EditText
+            android:id="@+id/ed_register_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            android:autofillHints="Description"
+            android:background="@drawable/textbox_background"
+            android:hint="@string/hintPhone"
+            android:inputType="phone"
+            android:paddingHorizontal="20dp"
+            android:textColor="@color/primary"
+            android:textColorHint="@color/grey"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/tv_register_phone"
+            tools:ignore="LabelFor,RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/tv_register_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/address"
+            android:textColor="@color/primary"
+            android:textSize="14sp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ed_register_phone" />
+
+        <EditText
+            android:id="@+id/ed_register_address"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            android:autofillHints="Description"
+            android:background="@drawable/textbox_background"
+            android:gravity="top|left"
+            android:hint="@string/hintAddress"
+            android:inputType="textMultiLine"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:textColor="@color/primary"
+            android:textColorHint="@color/grey"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/tv_register_address"
+            tools:ignore="LabelFor,RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/tv_register_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/productDesc"
+            android:textColor="@color/primary"
+            android:textSize="14sp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ed_register_address" />
+
+        <EditText
+            android:id="@+id/ed_register_desc"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            android:autofillHints="Description"
+            android:background="@drawable/textbox_background"
+            android:gravity="top|left"
+            android:hint="@string/productDesc"
+            android:inputType="textMultiLine"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:textColor="@color/primary"
+            android:textColorHint="@color/grey"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/tv_register_desc"
+            tools:ignore="LabelFor,RtlHardcoded" />
+        <TextView
+            android:id="@+id/tv_register_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/prompt_password"
+            android:textColor="@color/primary"
+            android:textSize="14sp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ed_register_desc" />
+
+        <com.example.smetracecare.cv.PasswordCustomView
+            android:id="@+id/ed_register_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="16dp"
+            android:hint="@string/hintPassword"
+            android:paddingHorizontal="20dp"
+            android:textColor="@color/primary"
+            android:textColorHint="@color/grey"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintTop_toBottomOf="@+id/tv_register_password" />
+        <TextView
+            android:id="@+id/tv_register_password_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/confirm_password"
+            android:textColor="@color/primary"
+            android:textSize="14sp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ed_register_password" />
+
+        <com.example.smetracecare.cv.MatchPassCustomView
+            android:id="@+id/ed_register_password_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="16dp"
+            android:hint="@string/confirm_password"
+            android:paddingHorizontal="20dp"
+            android:textColor="@color/primary"
+            android:textColorHint="@color/grey"
+            app:layout_constraintTop_toBottomOf="@+id/tv_register_password_confirm" />
+
+        <CheckBox
+            android:id="@+id/showPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/show_password"
+            android:textColor="@color/primary"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/ed_register_password_confirm" />
+
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/secondary"
+            android:text="@string/register"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/showPassword" />
+
+        <TextView
+            android:id="@+id/button_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:text="@string/back"
+            android:textColor="@color/primary"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/registerButton"
+            app:layout_constraintStart_toStartOf="@+id/registerButton"
+            app:layout_constraintTop_toBottomOf="@+id/registerButton" />
+        <TextView
+            android:id="@+id/space"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:text="@string/space"
+            android:textColor="@color/primary"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/button_back"
+            app:layout_constraintStart_toStartOf="@+id/button_back"
+            app:layout_constraintTop_toBottomOf="@+id/button_back" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

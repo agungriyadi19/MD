@@ -35,27 +35,9 @@ class WelcomeActivity : AppCompatActivity() {
         dataStoreViewModel.getRole().observe(this) { data ->
             role = data
         }
-        
-        binding.vlAdmin.setOnClickListener {
-            dataStoreViewModel.saveRole("Admin")
 
-            val spannableString = SpannableString(binding.tvAdmin.text)
-            spannableString.setSpan(UnderlineSpan(), 0, spannableString.length, 0)
-            spannableString.setSpan(
-                StyleSpan(Typeface.BOLD),
-                0,
-                spannableString.length,
-                0
-            ) // Add bold style
-            binding.tvAdmin.text = spannableString
-
-            binding.tvSupplier.text = binding.tvSupplier.text.toString()
-            binding.tvSme.text = binding.tvSme.text.toString()
-            binding.tvCustomer.text = binding.tvCustomer.text.toString()
-
-        }
         binding.vlSupplier.setOnClickListener {
-            dataStoreViewModel.saveRole("Supplier")
+            dataStoreViewModel.saveRole("supplier")
 
             val spannableString = SpannableString(binding.tvSupplier.text)
             spannableString.setSpan(UnderlineSpan(), 0, spannableString.length, 0)
@@ -67,13 +49,12 @@ class WelcomeActivity : AppCompatActivity() {
             ) // Add bold style
             binding.tvSupplier.text = spannableString
 
-            binding.tvAdmin.text = binding.tvAdmin.text.toString()
             binding.tvSme.text = binding.tvSme.text.toString()
             binding.tvCustomer.text = binding.tvCustomer.text.toString()
 
         }
         binding.vlSme.setOnClickListener {
-            dataStoreViewModel.saveRole("SME")
+            dataStoreViewModel.saveRole("umkm")
 
             val spannableString = SpannableString(binding.tvSme.text)
             spannableString.setSpan(UnderlineSpan(), 0, spannableString.length, 0)
@@ -85,7 +66,6 @@ class WelcomeActivity : AppCompatActivity() {
             ) // Add bold style
             binding.tvSme.text = spannableString
 
-            binding.tvAdmin.text = binding.tvAdmin.text.toString()
             binding.tvSupplier.text = binding.tvSupplier.text.toString()
             binding.tvCustomer.text = binding.tvCustomer.text.toString()
 
@@ -103,7 +83,6 @@ class WelcomeActivity : AppCompatActivity() {
             ) // Add bold style
             binding.tvCustomer.text = spannableString
 
-            binding.tvAdmin.text = binding.tvAdmin.text.toString()
             binding.tvSme.text = binding.tvSme.text.toString()
             binding.tvSupplier.text = binding.tvSupplier.text.toString()
 
