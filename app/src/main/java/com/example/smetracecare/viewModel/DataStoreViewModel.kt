@@ -41,4 +41,10 @@ class DataStoreViewModel(private val preferences: SharedPreferences) : ViewModel
             preferences.clearLogin()
         }
     }
+
+    fun saveLogin(loginSes: Boolean){
+        viewModelScope.launch {
+            preferences.saveLoginSession(loginSes)
+        }
+    }
 }

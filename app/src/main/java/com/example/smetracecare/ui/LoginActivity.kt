@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.smetracecare.R
@@ -13,12 +15,17 @@ import com.example.smetracecare.databinding.ActivityLoginBinding
 import com.example.smetracecare.viewModel.DataStoreViewModel
 import com.example.smetracecare.viewModel.ViewModelFactory
 import com.bumptech.glide.Glide
+import com.example.smetracecare.data.DataLogin
+import com.example.smetracecare.viewModel.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private val preferences = SharedPreferences.getInstance(dataStore)
-
+    private lateinit var role: String
+    private val loginViewModel: LoginViewModel by lazy {
+        ViewModelProvider(this)[LoginViewModel::class.java]
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -26,6 +33,7 @@ class LoginActivity : AppCompatActivity() {
 
         val dataStoreViewModel = ViewModelProvider(this, ViewModelFactory(preferences))[DataStoreViewModel::class.java]
         dataStoreViewModel.getRole().observe(this) { data ->
+            role = data
             if (data == "supplier") {
                 Glide.with(this)
                     .load(R.drawable.supplier_icon)
@@ -65,7 +73,25 @@ class LoginActivity : AppCompatActivity() {
         binding.loginButton.setOnClickListener {
             binding.edLoginEmail.clearFocus()
             binding.edLoginPassword.clearFocus()
+            binding.edLoginEmail.clearFocus()
+            binding.edLoginPassword.clearFocus()
 
+            if (dataValid()) {
+                val requestLogin = DataLogin(
+                    binding.edLoginEmail.text.toString().trim(),
+                    binding.edLoginPassword.text.toString().trim(),
+                    role
+                )
+                loginViewModel.getLoginResponse(requestLogin)
+
+            } else {
+                if (!binding.edLoginEmail.emailValid) binding.edLoginEmail.error =
+                    getString(R.string.noEmail)
+                if (!binding.edLoginPassword.passwordValid) binding.edLoginPassword.error =
+                    getString(R.string.noPass)
+
+                Toast.makeText(this, R.string.invalid_login, Toast.LENGTH_SHORT).show()
+            }
             val dataStoreViewModel = ViewModelProvider(this, ViewModelFactory(preferences))[DataStoreViewModel::class.java]
             dataStoreViewModel.getRole().observe(this) { data ->
                 if (data == "supplier") {
@@ -78,6 +104,29 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
             }
+        }
+    }
+
+    private fun dataValid(): Boolean {
+        return binding.edLoginEmail.emailValid && binding.edLoginPassword.passwordValid
+    }
+
+    private fun onLoading(it: Boolean) {
+        binding.progressBar.visibility = if (it) View.VISIBLE else View.GONE
+    }
+
+    private fun loginResponse(error: Boolean, msg: String, userViewModel: DataStoreViewModel) {
+        if (!error) {
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+            val user = loginViewModel.userLogin.value
+            userViewModel.saveLogin(true)
+            user?.loginResult!!.token.let { userViewModel.saveToken(it) }
+            user.loginResult.name.let { userViewModel.saveName(it) }
+        } else {
+            val responseTV = binding.result
+            responseTV.text = msg
+            responseTV.visibility = View.VISIBLE
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
         }
     }
 }

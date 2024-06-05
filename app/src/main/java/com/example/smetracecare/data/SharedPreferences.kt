@@ -3,6 +3,7 @@ package com.example.smetracecare.data
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
@@ -16,6 +17,7 @@ class SharedPreferences private constructor(private val dataStore: DataStore<Pre
     private val role = stringPreferencesKey("role_setting")
     private val token = stringPreferencesKey("token_session")
     private val name = stringPreferencesKey("login_name")
+    private val login = booleanPreferencesKey("login_session")
 
     fun getRoleData(): Flow<String> {
         return dataStore.data.map { preferences ->
@@ -53,6 +55,19 @@ class SharedPreferences private constructor(private val dataStore: DataStore<Pre
             preferences.remove(role)
             preferences.remove(name)
             preferences.remove(token)
+        }
+    }
+
+
+    fun getLoginSession(): Flow<Boolean> {
+        return dataStore.data.map { preferences ->
+            preferences[login] ?: false
+        }
+    }
+
+    suspend fun saveLoginSession(dataSession: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[login] = dataSession
         }
     }
 

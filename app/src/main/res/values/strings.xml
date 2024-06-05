@@ -154,7 +154,10 @@
     <string name="camera">Kamera</string>
     <string name="gallery">Galeri</string>
     <string name="uploadImage">Unggah Gambar</string>
+    <string name="invalid_login">Masuk tidak Valid</string>
 
+    <string name="noEmail">Email tidak valid</string>
+    <string name="noPass">Password tidak valid</string>
     <string name="camera_permission_dialog_box_title">Camera Permission Required</string>
     <string name="camera_permission_dialog_box_message">Without accessing the camera, it is not possible to scan QR CODES</string>
     <string name="camera_permission_dialog_positive_button_text">Allow Camera</string>
