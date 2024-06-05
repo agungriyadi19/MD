@@ -17,8 +17,8 @@ data class LoginResponse(
 	@field:SerializedName("message")
 	var message: String,
 
-	@field:SerializedName("loginResult")
-	var loginResult: LoginResult,
+	@field:SerializedName("result")
+	var result: LoginResult?
 )
 
 data class LoginResult(
@@ -28,8 +28,28 @@ data class LoginResult(
 	@field:SerializedName("name")
 	var name: String,
 
+	@field:SerializedName("email")
+	var email: String,
+
+	@field:SerializedName("description")
+	var description: String,
+
+	@field:SerializedName("address")
+	var address: String,
+
+	@field:SerializedName("phoneNumber")
+	var phoneNumber: String,
+
 	@field:SerializedName("token")
 	var token: String
+)
+
+data class ErrorResponse(
+	@field:SerializedName("error")
+	var error: Boolean,
+
+	@field:SerializedName("message")
+	var message: String
 )
 data class DataRegister(
 	var name: String,

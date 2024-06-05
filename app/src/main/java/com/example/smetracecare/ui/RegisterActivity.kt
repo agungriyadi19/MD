@@ -17,7 +17,7 @@ import com.example.smetracecare.data.dataStore
 import com.example.smetracecare.databinding.ActivityRegisterBinding
 import com.example.smetracecare.viewModel.DataStoreViewModel
 import com.example.smetracecare.viewModel.ViewModelFactory
-import com.example.smetracecare.viewmodel.RegisterViewModel
+import com.example.smetracecare.viewModel.RegisterViewModel
 
 class RegisterActivity : AppCompatActivity() {
     private val preferences = SharedPreferences.getInstance(dataStore)
@@ -86,6 +86,9 @@ class RegisterActivity : AppCompatActivity() {
             registerViewModel.getRegisterResponse(user)
 
         } else {
+            val responseTV = binding.result
+            responseTV.text = msg
+            responseTV.visibility = View.VISIBLE
             Toast.makeText(this, msg, Toast.LENGTH_SHORT)
                 .show()
         }

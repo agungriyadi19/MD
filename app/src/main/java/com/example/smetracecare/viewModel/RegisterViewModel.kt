@@ -1,4 +1,4 @@
-package com.example.smetracecare.viewmodel
+package com.example.smetracecare.viewModel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -7,7 +7,10 @@ import androidx.lifecycle.ViewModel
 import com.example.smetracecare.R
 import com.example.smetracecare.data.DataRegister
 import com.example.smetracecare.data.DetailResponse
+import com.example.smetracecare.data.ErrorResponse
 import com.example.smetracecare.retrofit.ApiConfig
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import retrofit2.Call
 import retrofit2.Response
 
@@ -34,10 +37,19 @@ class RegisterViewModel : ViewModel() {
                     _message.value = "Berhasil membuat akun"
                 } else {
                     isError = true
-                    when (response.code()) {
-                        401 -> _message.value = "Error aja"
-                        408 -> _message.value = "Tidak terhubung internet, silakan coba lagi"
-                        else -> _message.value = R.string.error_message.toString() + response.message()
+                    response.errorBody()?.let { errorBody ->
+                        val gson = Gson()
+                        val type = object : TypeToken<ErrorResponse>() {}.type
+                        val errorResponse: ErrorResponse? = gson.fromJson(errorBody.charStream(), type)
+
+                        errorResponse?.let {
+                            Log.e("API Error", it.message)
+
+                            when (response.code()) {
+                                408 -> _message.value = "Koneksi internet anda lambat, silahkan coba lagi"
+                                else -> _message.value = it.message
+                            }
+                        }
                     }
                 }
             }

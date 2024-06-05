@@ -1,6 +1,5 @@
 package com.example.smetracecare.viewModel
 
-import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.smetracecare.data.SharedPreferences

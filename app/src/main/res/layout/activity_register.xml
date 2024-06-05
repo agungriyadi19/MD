@@ -59,7 +59,18 @@
             tools:ignore="MissingConstraints,SpUsage"
             tools:layout_editor_absoluteX="0dp" />
 
-
+        <TextView
+            android:id="@+id/result"
+            android:textColor="@color/error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/result"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/register"
+            android:visibility="gone"
+            />
         <TextView
             android:id="@+id/tv_register_name"
             android:layout_width="wrap_content"
@@ -71,7 +82,7 @@
             android:textSize="14sp"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/register" />
+            app:layout_constraintTop_toBottomOf="@+id/result" />
 
         <EditText
             android:id="@+id/ed_register_name"

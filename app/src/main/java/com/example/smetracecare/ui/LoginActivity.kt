@@ -1,9 +1,11 @@
 package com.example.smetracecare.ui
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +33,10 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        onClicked()
+
+
+
         val dataStoreViewModel = ViewModelProvider(this, ViewModelFactory(preferences))[DataStoreViewModel::class.java]
         dataStoreViewModel.getRole().observe(this) { data ->
             role = data
@@ -51,7 +57,13 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
-        onClicked()
+        loginViewModel.message.observe(this) { msg ->
+            loginResponse(loginViewModel.isError, msg, dataStoreViewModel)
+        }
+
+        loginViewModel.loading.observe(this) {
+            onLoading(it)
+        }
     }
 
     private fun onClicked() {
@@ -73,8 +85,6 @@ class LoginActivity : AppCompatActivity() {
         binding.loginButton.setOnClickListener {
             binding.edLoginEmail.clearFocus()
             binding.edLoginPassword.clearFocus()
-            binding.edLoginEmail.clearFocus()
-            binding.edLoginPassword.clearFocus()
 
             if (dataValid()) {
                 val requestLogin = DataLogin(
@@ -92,18 +102,7 @@ class LoginActivity : AppCompatActivity() {
 
                 Toast.makeText(this, R.string.invalid_login, Toast.LENGTH_SHORT).show()
             }
-            val dataStoreViewModel = ViewModelProvider(this, ViewModelFactory(preferences))[DataStoreViewModel::class.java]
-            dataStoreViewModel.getRole().observe(this) { data ->
-                if (data == "supplier") {
-                    val intent = Intent(this@LoginActivity, SupplierHomeActivity::class.java)
-                    startActivity(intent)
-                }
-                if (data == "umkm") {
-                    // UMKM Page
-                    val intent = Intent(this@LoginActivity, SupplierHomeActivity::class.java)
-                    startActivity(intent)
-                }
-            }
+
         }
     }
 
@@ -120,9 +119,24 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
             val user = loginViewModel.userLogin.value
             userViewModel.saveLogin(true)
-            user?.loginResult!!.token.let { userViewModel.saveToken(it) }
-            user.loginResult.name.let { userViewModel.saveName(it) }
+            user?.result!!.token.let { userViewModel.saveToken(it) }
+            user.result!!.name.let { userViewModel.saveName(it) }
+
+            val dataStoreViewModel = ViewModelProvider(this, ViewModelFactory(preferences))[DataStoreViewModel::class.java]
+            dataStoreViewModel.getRole().observe(this) { data ->
+                if (data == "supplier") {
+                    val intent = Intent(this@LoginActivity, SupplierHomeActivity::class.java)
+                    startActivity(intent)
+                }
+                if (data == "umkm") {
+                    // UMKM Page
+                    val intent = Intent(this@LoginActivity, SupplierHomeActivity::class.java)
+                    startActivity(intent)
+                }
+            }
         } else {
+            Log.d("msg", msg)
+            Log.d("response", userViewModel.toString())
             val responseTV = binding.result
             responseTV.text = msg
             responseTV.visibility = View.VISIBLE
