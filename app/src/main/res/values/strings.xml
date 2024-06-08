@@ -162,4 +162,10 @@
     <string name="camera_permission_dialog_box_message">Without accessing the camera, it is not possible to scan QR CODES</string>
     <string name="camera_permission_dialog_positive_button_text">Allow Camera</string>
     <string name="camera_permission_dialog_negetive_button_text">Cancel</string>
+
+    <string name="image_classifier_failed">Image classifier failed to initialize</string>
+    <string name="image">Gambar</string>
+    <string name="analyze">Analisis</string>
+    <string name="error_load">Kesalahan Memuat</string>
+
 </resources>

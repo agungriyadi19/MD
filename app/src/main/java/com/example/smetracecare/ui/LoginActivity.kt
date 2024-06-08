@@ -35,8 +35,6 @@ class LoginActivity : AppCompatActivity() {
 
         onClicked()
 
-
-
         val dataStoreViewModel = ViewModelProvider(this, ViewModelFactory(preferences))[DataStoreViewModel::class.java]
         dataStoreViewModel.getRole().observe(this) { data ->
             role = data
@@ -114,13 +112,18 @@ class LoginActivity : AppCompatActivity() {
         binding.progressBar.visibility = if (it) View.VISIBLE else View.GONE
     }
 
+    private fun String.extractUserId(): String {
+        return this.substringAfter("user-")
+    }
     private fun loginResponse(error: Boolean, msg: String, userViewModel: DataStoreViewModel) {
         if (!error) {
             Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
             val user = loginViewModel.userLogin.value
             userViewModel.saveLogin(true)
-            user?.result!!.token.let { userViewModel.saveToken(it) }
-            user.result!!.name.let { userViewModel.saveName(it) }
+            user?.result!!.token.let { userViewModel.saveToken("Bearer $it") }
+            user.result!!.userId.let {
+                userViewModel.saveUserID(it.extractUserId())
+            }
 
             val dataStoreViewModel = ViewModelProvider(this, ViewModelFactory(preferences))[DataStoreViewModel::class.java]
             dataStoreViewModel.getRole().observe(this) { data ->

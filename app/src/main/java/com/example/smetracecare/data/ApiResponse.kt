@@ -21,6 +21,17 @@ data class LoginResponse(
 	var result: LoginResult?
 )
 
+data class GetSupplierProfileResponse(
+	@field:SerializedName("error")
+	var error: Boolean,
+
+	@field:SerializedName("message")
+	var message: String,
+
+	@field:SerializedName("result")
+	var result: ProfileResult?
+)
+
 data class LoginResult(
 	@field:SerializedName("userId")
 	var userId: String,
@@ -42,6 +53,26 @@ data class LoginResult(
 
 	@field:SerializedName("token")
 	var token: String
+)
+
+data class ProfileResult(
+	@field:SerializedName("userId")
+	var userId: String,
+
+	@field:SerializedName("name")
+	var name: String,
+
+	@field:SerializedName("email")
+	var email: String,
+
+	@field:SerializedName("description")
+	var description: String,
+
+	@field:SerializedName("address")
+	var address: String,
+
+	@field:SerializedName("phoneNumber")
+	var phoneNumber: String
 )
 
 data class ErrorResponse(

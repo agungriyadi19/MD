@@ -15,9 +15,23 @@ class DataStoreViewModel(private val preferences: SharedPreferences) : ViewModel
         return preferences.getToken().asLiveData()
     }
 
+    fun getName(): LiveData<String> {
+        return preferences.getNameData().asLiveData()
+    }
+
+    fun getUserID(): LiveData<String> {
+        return preferences.getuserIDData().asLiveData()
+    }
+
     fun saveToken(token: String) {
         viewModelScope.launch {
             preferences.saveToken(token)
+        }
+    }
+
+    fun saveUserID(userID: String) {
+        viewModelScope.launch {
+            preferences.saveUserIDData(userID)
         }
     }
 

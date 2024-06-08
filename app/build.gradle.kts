@@ -82,8 +82,13 @@ dependencies {
     implementation(libs.androidx.camera.view)
 
     // [ML Kit barcode scanning API] (https://developers.google.com/ml-kit/vision/barcode-scanning/android)
-
     implementation(libs.barcode.scanning)
 
+    implementation (libs.ucrop)
+    implementation(libs.coil)
+    implementation(libs.glide)
+
+    implementation(libs.tensorflow.lite)
+    implementation(libs.tensorflow.lite.task.vision)
 
 }

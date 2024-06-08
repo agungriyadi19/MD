@@ -82,7 +82,6 @@ class RegisterActivity : AppCompatActivity() {
                 binding.edRegisterPhone.text.toString(),
                 binding.edRegisterPasswordConfirm.text.toString()
             )
-            Log.d("data regis", user.toString())
             registerViewModel.getRegisterResponse(user)
 
         } else {

@@ -15,6 +15,7 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "se
 class SharedPreferences private constructor(private val dataStore: DataStore<Preferences>) {
 
     private val role = stringPreferencesKey("role_setting")
+    private val userID = stringPreferencesKey("user_id")
     private val token = stringPreferencesKey("token_session")
     private val name = stringPreferencesKey("login_name")
     private val login = booleanPreferencesKey("login_session")
@@ -24,12 +25,26 @@ class SharedPreferences private constructor(private val dataStore: DataStore<Pre
             preferences[role] ?: ""
         }
     }
+    fun getuserIDData(): Flow<String> {
+        return dataStore.data.map { preferences ->
+            preferences[userID] ?: ""
+        }
+    }
+    fun getNameData(): Flow<String> {
+        return dataStore.data.map { preferences ->
+            preferences[name] ?: ""
+        }
+    }
 
     suspend fun saveRoleData(dataRole: String) {
         dataStore.edit { preferences ->
             preferences[role] = dataRole
         }
-
+    }
+    suspend fun saveUserIDData(dataUserID: String) {
+        dataStore.edit { preferences ->
+            preferences[userID] = dataUserID
+        }
     }
 
     fun getToken(): Flow<String> {

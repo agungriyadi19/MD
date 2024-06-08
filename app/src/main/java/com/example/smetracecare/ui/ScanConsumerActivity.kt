@@ -29,13 +29,19 @@ class ScanConsumerActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.scanButtonBarcode.setOnClickListener(){
-            Log.d("halo", "hallo")
-
             requestCameraAndStartScanner()
         }
 
         binding.tvScanButtonBarcode.setOnClickListener(){
             requestCameraAndStartScanner()
+        }
+
+        binding.scanButtonBatik.setOnClickListener(){
+            startActivity(Intent(this, ScannerBatikActivity::class.java))
+        }
+
+        binding.tvScanButtonBatik.setOnClickListener(){
+            startActivity(Intent(this, ScannerBatikActivity::class.java))
         }
 
         binding.cancelScan.setOnClickListener(){
