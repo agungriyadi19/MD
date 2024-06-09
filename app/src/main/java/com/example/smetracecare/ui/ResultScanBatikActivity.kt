@@ -2,20 +2,26 @@ package com.example.smetracecare.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.ImageDecoder
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.smetracecare.R
 import com.example.smetracecare.databinding.ActivityResultScanBatikBinding
-import com.example.smetracecare.helper.ImageClassifierHelper
-import org.tensorflow.lite.task.vision.classifier.Classifications
+import com.example.smetracecare.ml.BestModel
+import org.tensorflow.lite.DataType
+import org.tensorflow.lite.support.image.TensorImage
+import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 
 class ResultScanBatikActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResultScanBatikBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // TODO: Menampilkan hasil gambar, prediksi, dan confidence score.
         super.onCreate(savedInstanceState)
         binding = ActivityResultScanBatikBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -24,28 +30,15 @@ class ResultScanBatikActivity : AppCompatActivity() {
         if (imageUriString != null) {
             val imageUri = Uri.parse(imageUriString)
             displayImage(imageUri)
-
-            val imageClassifierHelper = ImageClassifierHelper(
-                contextValue = this,
-                classifierListenerValue = object : ImageClassifierHelper.ClassifierListener {
-                    override fun onError(errorMsg: String) {
-                        Log.d(TAG, "Error: $errorMsg")
-                    }
-
-                    override fun onResults(results: List<Classifications>?, inferenceTime: Long) {
-                        results?.let { showResults(it) }
-                    }
-                }
-            )
-            imageClassifierHelper.classifyImage(imageUri)
+            classifyImage(imageUri)
         } else {
             Log.e(TAG, "No image URI provided")
+            showToast(getString(R.string.no_image_uri))
             finish()
         }
 
         binding.btnBack.setOnClickListener {
-            val moveBack = Intent(this@ResultScanBatikActivity, ScannerBatikActivity::class.java)
-            startActivity(moveBack)
+            finish()
         }
     }
 
@@ -54,16 +47,92 @@ class ResultScanBatikActivity : AppCompatActivity() {
         binding.resultImage.setImageURI(uri)
     }
 
-    @SuppressLint("SetTextI18n")
-    private fun showResults(results: List<Classifications>) {
-        val topResult = results[0]
-        val label = topResult.categories[0].label
-        val score = topResult.categories[0].score
+    private fun classifyImage(imageUri: Uri) {
+        try {
+            val bitmap = getBitmapFromUri(imageUri)
+            val resizedBitmap = Bitmap.createScaledBitmap(bitmap, 224, 224, true)
 
-        fun Float.formatToString(): String {
-            return String.format("%.2f%%", this * 100)
+            // Ensure the bitmap is in ARGB_8888 format
+            val argbBitmap = resizedBitmap.copy(Bitmap.Config.ARGB_8888, true)
+
+            val model = BestModel.newInstance(this)
+
+            val tensorImage = TensorImage(DataType.FLOAT32)
+            tensorImage.load(argbBitmap)
+            val byteBuffer = tensorImage.buffer
+
+            val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 224, 224, 3), DataType.FLOAT32)
+            inputFeature0.loadBuffer(byteBuffer)
+
+            val outputs = model.process(inputFeature0)
+            val outputFeature0 = outputs.outputFeature0AsTensorBuffer
+
+            showResults(outputFeature0)
+            model.close()
+        } catch (e: Exception) {
+            Log.e(TAG, "Error in classifying image", e)
+            showToast("Error in classifying image: ${e.message}")
         }
-        binding.resultText.text = "$label ${score.formatToString()}"
+    }
+
+    private fun getBitmapFromUri(uri: Uri): Bitmap {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            val source = ImageDecoder.createSource(contentResolver, uri)
+            ImageDecoder.decodeBitmap(source)
+        } else {
+            MediaStore.Images.Media.getBitmap(contentResolver, uri)
+        }
+    }
+
+    @SuppressLint("SetTextI18n", "StringFormatInvalid")
+    private fun showResults(outputFeature0: TensorBuffer) {
+        val scores = outputFeature0.floatArray
+//        val labels = arrayOf("Label1", "Label2", "Label3") // Replace with your actual labels
+        Log.d("hasil", scores.contentToString())
+        val probabilities = listOf(
+            scores.contentToString()
+        )
+        val labels = arrayOf(
+            "Label1", "Label2", "Label3", "Label4", "Label5",
+            "Label6", "Label7", "Label8", "Label9", "Label10",
+            "Label11", "Label12", "Label13", "Label14", "Label15"
+        )
+
+// Ensure that probabilities and labels have the same size
+        if (probabilities.size == labels.size) {
+            val result = probabilities.zip(labels)
+            for ((probability, label) in result) {
+                println("$label: $probability")
+                Log.d("hasil", "$label: $probability")
+            }
+        } else {
+            println("Number of probabilities does not match number of labels")
+        }
+        if (scores.isEmpty()) {
+            binding.resultText.text = getString(R.string.classification_error, "No valid results")
+            return
+        }
+
+        // Ensure the scores array length matches the labels array length
+        if (scores.size != labels.size) {
+            Log.e(TAG, "Scores and labels arrays size mismatch")
+            binding.resultText.text = getString(R.string.classification_error, "Size mismatch")
+            return
+        }
+
+        val maxIndex = scores.indices.maxByOrNull { scores[it] } ?: -1
+        if (maxIndex != -1) {
+            val label = labels[maxIndex]
+            val score = scores[maxIndex]
+            binding.resultText.text = "$label ${score.formatToString()}"
+        } else {
+            binding.resultText.text = getString(R.string.classification_error, "No valid results")
+        }
+    }
+
+    @SuppressLint("DefaultLocale")
+    private fun Float.formatToString(): String {
+        return String.format("%.2f%%", this * 100)
     }
 
     private fun showToast(message: String) {
@@ -72,8 +141,6 @@ class ResultScanBatikActivity : AppCompatActivity() {
 
     companion object {
         const val IMAGE_URI = "img_uri"
-        const val TAG = "image_picker"
-        const val RESULT_TEXT = "result_text"
-        const val REQUEST_HISTORY_UPDATE = 1
+        const val TAG = "ResultScanBatikActivity"
     }
 }

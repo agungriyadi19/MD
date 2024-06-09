@@ -167,5 +167,7 @@
     <string name="image">Gambar</string>
     <string name="analyze">Analisis</string>
     <string name="error_load">Kesalahan Memuat</string>
+    <string name="no_image_uri">No Image</string>
+    <string name="classification_error">classification Error</string>
 
 </resources>

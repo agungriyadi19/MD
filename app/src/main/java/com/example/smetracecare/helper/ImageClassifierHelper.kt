@@ -20,12 +20,11 @@ import org.tensorflow.lite.task.core.BaseOptions
 import org.tensorflow.lite.task.vision.classifier.ImageClassifier
 import org.tensorflow.lite.task.vision.classifier.Classifications
 
-
 @Suppress("DEPRECATION")
 class ImageClassifierHelper(
     var maxResultsValue: Int = 3,
     val thresholdValue: Float = 0.1f,
-    val modelNameValue: String = "cancer_classification.tflite",
+    val modelNameValue: String = "best_model.tflite",
     val contextValue: Context,
     val classifierListenerValue: ClassifierListener?
 ) {
@@ -54,7 +53,6 @@ class ImageClassifierHelper(
             classifierListenerValue?.onError(contextValue.getString(R.string.image_classifier_failed))
             Log.e(IMAGETAG, e.message.toString())
         }
-
     }
 
     fun classifyImage(imageUri: Uri) {
@@ -91,7 +89,10 @@ class ImageClassifierHelper(
             .add(CastOp(DataType.UINT8))
             .build()
 
-        return imageProcessor.process(TensorImage.fromBitmap(bitmap))
+        val tensorImage = TensorImage(DataType.UINT8)
+        tensorImage.load(bitmap)
+
+        return imageProcessor.process(tensorImage)
     }
 
     private fun performInference(tensorImage: TensorImage): List<Classifications>? {
@@ -117,5 +118,4 @@ class ImageClassifierHelper(
     companion object {
         private const val IMAGETAG = "Image_Classifier_Helper_Modified" //
     }
-
 }
