@@ -97,6 +97,23 @@ class ResultScanBatikActivity : AppCompatActivity() {
             "Label6", "Label7", "Label8", "Label9", "Label10",
             "Label11", "Label12", "Label13", "Label14", "Label15"
         )
+//        val labels = arrayOf(
+//            "Batik Tambal",
+//            "Batik Sekar Jagad",
+//            "Batik Poleng",
+//            "Batik Parang",
+//            "Batik Pala",
+//            "Batik Megamendung",
+//            "Batik Lasem",
+//            "Batik Kawung",
+//            "Batik Insang",
+//            "Batik Ikat Celup",
+//            "Batik Dayak",
+//            "Batik Cendrawasih",
+//            "Batik Geblek Renteng",
+//            "Batik Betawi",
+//            "Batik Bali",
+//        )
 
 // Ensure that probabilities and labels have the same size
         if (probabilities.size == labels.size) {
@@ -124,7 +141,22 @@ class ResultScanBatikActivity : AppCompatActivity() {
         if (maxIndex != -1) {
             val label = labels[maxIndex]
             val score = scores[maxIndex]
-            binding.resultText.text = "$label ${score.formatToString()}"
+            if(score > 0.7) {
+                binding.resultText.text = "$label ${score.formatToString()}"
+            } else {
+                binding.resultText.text = "Gambar tidak terdeteksi"
+
+            }
+
+
+//            val resultBuilder = StringBuilder()
+//            for (i in labels.indices) {
+//                val label = labels[i]
+//                val score = scores[i]
+//                resultBuilder.append("$label: ${score.formatToString()}\n")
+//            }
+//            val result = resultBuilder.toString()
+//            binding.resultText.text = result
         } else {
             binding.resultText.text = getString(R.string.classification_error, "No valid results")
         }

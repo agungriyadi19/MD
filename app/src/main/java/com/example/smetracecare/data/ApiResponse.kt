@@ -98,6 +98,19 @@ data class DetailResponse(
 	var message: String
 )
 
+data class UpdateSupplierProfileRequest(
+	val name: String,
+	val email: String,
+	val phoneNumber: String,
+	val address: String,
+	val description: String
+)
+
+data class UpdateSupplierProfileResponse(
+	val success: Boolean,
+	val message: String
+)
+
 data class ResponseStory(
 	var error: String,
 	var message: String,
