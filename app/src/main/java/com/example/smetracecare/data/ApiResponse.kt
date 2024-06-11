@@ -111,19 +111,34 @@ data class UpdateSupplierProfileResponse(
 	val message: String
 )
 
-data class ResponseStory(
+data class GetMaterial(
 	var error: String,
 	var message: String,
-	var listStory: List<StoryDetailResponse>
+	var result: List<MaterialDetail>
 )
 
 @Parcelize
-data class StoryDetailResponse (
-	var id: String,
+data class MaterialDetail (
+	var materialId: String,
 	var name: String,
 	var description: String,
-	var photoUrl: String,
-	var createdAt: String,
-	var lat: Double,
-	var lon: Double
+	var image: String,
+	var type: String,
+	var price: String,
+	var supplierId: String
 ) : Parcelable
+
+data class DataAddMaterial(
+	var name: String,
+	var description: String,
+	var image: String,
+	var type: String,
+	var price: String,
+	var supplierId: String
+)
+
+data class ResponseAddMaterial(
+	var error: String,
+	var message: String,
+	var result: MaterialDetail
+)

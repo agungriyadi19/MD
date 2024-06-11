@@ -64,6 +64,10 @@
             android:exported="false"
             android:theme="@style/Theme.SMETraceCare" />
         <activity
+            android:name=".ui.SupplierProductDetailActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SMETraceCare" />
+        <activity
             android:name=".ui.SupplierProductEditActivity"
             android:exported="false"
             android:theme="@style/Theme.SMETraceCare" />
