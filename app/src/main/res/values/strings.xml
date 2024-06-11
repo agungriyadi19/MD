@@ -117,7 +117,7 @@
     <string name="space" />
     <string name="supplierProfile">Profile Supplier</string>
     <string name="profileImage">My Profile</string>
-    <string name="editProduct">Edit Profile</string>
+    <string name="editProduct">Edit Produk</string>
     <string name="colon">:</string>
     <string name="name">Nama</string>
     <string name="email">Email</string>
@@ -169,5 +169,7 @@
     <string name="error_load">Kesalahan Memuat</string>
     <string name="no_image_uri">No Image</string>
     <string name="classification_error">classification Error</string>
+    <string name="logout">Keluar</string>
+    <string name="delete">Hapus</string>
 
 </resources>

@@ -62,14 +62,11 @@ class SupplierHomeActivity : AppCompatActivity() {
     }
 
     private fun setDataMaterial(material: List<MaterialDetail>) {
-        Log.d("material", material.toString())
-
         val adapter = ListMaterialAdapter(material)
         binding.rvStories.layoutManager = LinearLayoutManager(this)
         binding.rvStories.adapter = adapter
         adapter.setOnItemClickCallback(object : ListMaterialAdapter.OnItemClickCallback {
             override fun onItemClicked(data: MaterialDetail) {
-                Log.d("detail material", data.toString())
                 val intent = Intent(this@SupplierHomeActivity, SupplierProductDetailActivity::class.java)
                 intent.putExtra(SupplierProductDetailActivity.EXTRA_DATA, data)
                 startActivity(intent)
