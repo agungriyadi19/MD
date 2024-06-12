@@ -90,5 +90,6 @@ dependencies {
 
     implementation(libs.tensorflow.lite)
     implementation(libs.tensorflow.lite.task.vision)
+    implementation (libs.compressor)
 
 }

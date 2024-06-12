@@ -19,7 +19,7 @@ import com.example.smetracecare.viewModel.MaterialViewModel
 import com.example.smetracecare.viewModel.ViewModelFactory
 
 class SupplierHomeActivity : AppCompatActivity() {
-    private val preferences = SharedPreferences.getInstance(dataStore)
+    private lateinit var preferences: SharedPreferences
 
     private lateinit var binding: ActivitySupplierHomeBinding
     private val materialViewModel: MaterialViewModel by lazy {
@@ -27,6 +27,7 @@ class SupplierHomeActivity : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        preferences = SharedPreferences.getInstance(dataStore)
         binding = ActivitySupplierHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         onClicked()

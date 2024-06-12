@@ -38,7 +38,6 @@ class MaterialViewModel : ViewModel() {
 //                    _material.value = responseBody!!
                     response.body()?.let {
                         _material.value = it.result
-                        Log.d("MaterialViewModel", "Data fetched successfully: ${it.result}")
                     }
                 } else {
                     isError = true

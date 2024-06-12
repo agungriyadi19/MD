@@ -13,7 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.smetracecare.R
 import com.example.smetracecare.databinding.ActivityResultScanBatikBinding
-import com.example.smetracecare.ml.BestModel
+import com.example.smetracecare.ml.Model
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
@@ -55,7 +55,7 @@ class ResultScanBatikActivity : AppCompatActivity() {
             // Ensure the bitmap is in ARGB_8888 format
             val argbBitmap = resizedBitmap.copy(Bitmap.Config.ARGB_8888, true)
 
-            val model = BestModel.newInstance(this)
+            val model = Model.newInstance(this)
 
             val tensorImage = TensorImage(DataType.FLOAT32)
             tensorImage.load(argbBitmap)
@@ -95,7 +95,7 @@ class ResultScanBatikActivity : AppCompatActivity() {
         val labels = arrayOf(
             "Label1", "Label2", "Label3", "Label4", "Label5",
             "Label6", "Label7", "Label8", "Label9", "Label10",
-            "Label11", "Label12", "Label13", "Label14", "Label15"
+            "Label11", "Label12"
         )
 //        val labels = arrayOf(
 //            "Batik Tambal",
@@ -139,24 +139,23 @@ class ResultScanBatikActivity : AppCompatActivity() {
 
         val maxIndex = scores.indices.maxByOrNull { scores[it] } ?: -1
         if (maxIndex != -1) {
-            val label = labels[maxIndex]
-            val score = scores[maxIndex]
-            if(score > 0.7) {
-                binding.resultText.text = "$label ${score.formatToString()}"
-            } else {
-                binding.resultText.text = "Gambar tidak terdeteksi"
-
-            }
-
-
-//            val resultBuilder = StringBuilder()
-//            for (i in labels.indices) {
-//                val label = labels[i]
-//                val score = scores[i]
-//                resultBuilder.append("$label: ${score.formatToString()}\n")
+//            val label = labels[maxIndex]
+//            val score = scores[maxIndex]
+//            if(score > 0.7) {
+//                binding.resultText.text = "$label ${score.formatToString()}"
+//            } else {
+//                binding.resultText.text = "Gambar tidak terdeteksi"
 //            }
-//            val result = resultBuilder.toString()
-//            binding.resultText.text = result
+
+
+            val resultBuilder = StringBuilder()
+            for (i in labels.indices) {
+                val label = labels[i]
+                val score = scores[i]
+                resultBuilder.append("$label: ${score.formatToString()}\n")
+            }
+            val result = resultBuilder.toString()
+            binding.resultText.text = result
         } else {
             binding.resultText.text = getString(R.string.classification_error, "No valid results")
         }

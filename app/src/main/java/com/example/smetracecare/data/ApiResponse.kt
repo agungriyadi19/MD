@@ -131,14 +131,13 @@ data class MaterialDetail (
 data class DataAddMaterial(
 	var name: String,
 	var description: String,
-	var image: String,
 	var type: String,
-	var price: String,
+	var price: Int,
 	var supplierId: String
 )
 
 data class ResponseAddMaterial(
 	var error: String,
 	var message: String,
-	var result: MaterialDetail
+	var result: MaterialDetail?
 )

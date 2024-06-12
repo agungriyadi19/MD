@@ -52,19 +52,27 @@ interface ApiService {
     ): Call<GetMaterial>
 
     @Multipart
-    @POST("stories")
+    @POST("barang_mentah")
     fun addMaterial(
         @Part file:MultipartBody.Part,
-        @Body request: DataAddMaterial,
+        @Part("name") name: RequestBody,
+        @Part("description") description: RequestBody,
+        @Part("type") type: RequestBody,
+        @Part("supplier_id") supplierId: RequestBody,
+        @Part("price") price: RequestBody,
         @Header("authorization") token: String
     ): Call<ResponseAddMaterial>
 
     @Multipart
-    @PUT("stories/{materialId}")
+    @PUT("barang_mentah/{materialId}")
     fun editMaterial(
-        @Part file:MultipartBody.Part,
-        @Body request: DataAddMaterial,
         @Path("materialId") materialId: String,
+        @Part file:MultipartBody.Part,
+        @Part("name") name: RequestBody,
+        @Part("description") description: RequestBody,
+        @Part("type") type: RequestBody,
+        @Part("supplier_id") supplierId: RequestBody,
+        @Part("price") price: RequestBody,
         @Header("authorization") token: String
     ): Call<ResponseAddMaterial>
 

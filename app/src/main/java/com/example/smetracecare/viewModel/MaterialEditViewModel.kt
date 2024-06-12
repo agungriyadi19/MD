@@ -13,6 +13,7 @@ import com.example.smetracecare.retrofit.ApiConfig
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Response
 
@@ -25,23 +26,24 @@ class MaterialEditViewModel : ViewModel() {
     private val _message = MutableLiveData<String>()
     val message: LiveData<String> = _message
 
-    private val _material = MutableLiveData<MaterialDetail>()
-    val material: LiveData<MaterialDetail> get() = _material
-
-    fun editMaterial(photo: MultipartBody.Part, token:String, materialId: String, dataAddMaterial: DataAddMaterial) {
+    fun editMaterial(
+        materialId: String,
+        file: MultipartBody.Part,
+        token: String,
+        name: RequestBody,
+        description: RequestBody,
+        type: RequestBody,
+        supplierId: RequestBody,
+        price: RequestBody
+        ) {
         _loading.value = true
-        val api = ApiConfig.getApiService().editMaterial(photo,dataAddMaterial, materialId,token)
+        val api = ApiConfig.getApiService().editMaterial(materialId,file, name, description, type, supplierId, price,token)
         api.enqueue(object : retrofit2.Callback<ResponseAddMaterial> {
             override fun onResponse(call: Call<ResponseAddMaterial>, response: Response<ResponseAddMaterial>) {
                 _loading.value = false
                 val responseBody = response.body()
                 if (response.isSuccessful) {
                     isError = false
-//                    _material.value = responseBody!!
-                    response.body()?.let {
-                        _material.value = it.result
-                        Log.d("MaterialViewModel", "Data fetched successfully: ${it.result}")
-                    }
                 } else {
                     isError = true
 

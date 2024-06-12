@@ -171,5 +171,8 @@
     <string name="classification_error">classification Error</string>
     <string name="logout">Keluar</string>
     <string name="delete">Hapus</string>
+    <string name="message">Pesan</string>
+    <string name="uploadWarning">Masukan gambar terlebih dahulu</string>
+    <string name="uploadDescWarning">Masukan Deskripsi</string>
 
 </resources>

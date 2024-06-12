@@ -7,9 +7,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
 import android.view.View
+import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.smetracecare.data.MaterialDetail
+import com.example.smetracecare.data.SharedPreferences
+import com.example.smetracecare.data.dataStore
 import com.example.smetracecare.databinding.ActivitySupplierProductDetailBinding
+import com.example.smetracecare.viewModel.DataStoreViewModel
+import com.example.smetracecare.viewModel.MaterialAddViewModel
+import com.example.smetracecare.viewModel.MaterialDeleteViewModel
+import com.example.smetracecare.viewModel.ViewModelFactory
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.util.Locale
@@ -18,22 +26,55 @@ import java.util.Locale
 class SupplierProductDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySupplierProductDetailBinding
-
+    private val materialDeleteViewModel: MaterialDeleteViewModel by lazy {
+        ViewModelProvider(this)[MaterialDeleteViewModel::class.java]
+    }
+    private val preferences = SharedPreferences.getInstance(dataStore)
+    private lateinit var token: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySupplierProductDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val dataStoreViewModel =
+            ViewModelProvider(this, ViewModelFactory(preferences))[DataStoreViewModel::class.java]
+        dataStoreViewModel.getToken().observe(this) {
+            token = it
+        }
 
         val detailStory = intent.getParcelableExtra<MaterialDetail>(EXTRA_DATA) as MaterialDetail
         setStory(detailStory)
 
         binding.editButton.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(this@SupplierProductDetailActivity, SupplierProductEditActivity::class.java))
+            val intent = Intent(this@SupplierProductDetailActivity, SupplierProductEditActivity::class.java)
+            intent.putExtra(EXTRA_DATA, detailStory) // Meneruskan materialId ke SupplierProductEditActivity
+            startActivity(intent)
         })
 
         binding.btnBack.setOnClickListener(View.OnClickListener {
             startActivity(Intent(this@SupplierProductDetailActivity, SupplierHomeActivity::class.java))
         })
+        var materialId = detailStory.materialId.substring(9)
+        binding.buttonDelete.setOnClickListener {
+            showDeleteConfirmationDialog(materialId)
+        }
+    }
+
+    private fun showDeleteConfirmationDialog(materialId: String) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Konfirmasi Penghapusan")
+            .setMessage("Apakah Anda yakin ingin menghapus?")
+            .setPositiveButton("Ya") { dialog, which ->
+                // Aksi penghapusan di sini
+                materialDeleteViewModel.DeleteMaterial(token, materialId)
+                val intent = Intent(this, SupplierHomeActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intent)
+                finish()
+            }
+            .setNegativeButton("Tidak") { dialog, which ->
+                dialog.dismiss()
+            }
+            .show()
     }
 
     private fun setStory(detailStory: MaterialDetail) {
@@ -70,5 +111,6 @@ class SupplierProductDetailActivity : AppCompatActivity() {
     }
     companion object {
         const val EXTRA_DATA = "EXTRA_DATA"
+        const val EXTRA_MATERIAL_ID = "EXTRA_MATERIAL_ID"
     }
 }
