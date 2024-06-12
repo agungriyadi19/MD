@@ -34,9 +34,12 @@ class SupplierProfileActivity : AppCompatActivity() {
             }
         }
         observeUserProfile()
+        binding.buttonLogout.setOnClickListener {
+            showDeleteConfirmationDialog()
+        }
     }
 
-    private fun showDeleteConfirmationDialog(materialId: String) {
+    private fun showDeleteConfirmationDialog() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Konfirmasi keluar")
             .setMessage("Apakah Anda yakin ingin keluar?")
