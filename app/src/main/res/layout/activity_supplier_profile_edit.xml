@@ -42,43 +42,17 @@
         </LinearLayout>
 
 
-        <ImageView
-            android:id="@+id/iv_detail_photo"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:adjustViewBounds="true"
-            android:contentDescription="@string/productImage"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            app:srcCompat="@drawable/ic_image"
-            tools:ignore="MissingConstraints"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-        <TextView
-            android:id="@+id/tvPreviewImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/primary"
-            android:layout_marginTop="16dp"
-            android:text="@string/previewImage"
-            android:textStyle="italic"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_detail_photo" />
-
         <TextView
             android:id="@+id/tv_supplier_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
             android:text="@string/name"
-            android:textSize="14sp"
+            android:layout_marginTop="10dp"
             android:textColor="@color/primary"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPreviewImage" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <EditText
             android:id="@+id/ed_add_supplier_name"
