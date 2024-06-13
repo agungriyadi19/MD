@@ -47,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
             }
             if (data == "umkm") {
                 Glide.with(this)
-                    .load(R.drawable.umkm_icon2)
+                    .load(R.drawable.umkm_icon)
                     .into(binding.logo)
                 binding.apply {
                     login.text = getString(R.string.login_sme)

@@ -173,7 +173,7 @@
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:contentDescription="@string/umkm_batik"
-                            android:src="@drawable/umkm_icon2"
+                            android:src="@drawable/umkm_icon"
                             android:layout_gravity="center"/>
 
                         <TextView
@@ -201,7 +201,7 @@
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:contentDescription="@string/konsumer"
-                            android:src="@drawable/visitor_icon2"
+                            android:src="@drawable/visitor_icon"
                             android:layout_gravity="center"/>
 
                         <TextView

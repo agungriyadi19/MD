@@ -46,7 +46,7 @@ class RegisterActivity : AppCompatActivity() {
             }
             if (data == "umkm") {
                 Glide.with(this)
-                    .load(R.drawable.umkm_icon2)
+                    .load(R.drawable.umkm_icon)
                     .into(binding.logo)
                 binding.apply {
                     register.text = getString(R.string.register_sme)
