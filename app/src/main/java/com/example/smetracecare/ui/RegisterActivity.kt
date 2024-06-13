@@ -38,7 +38,7 @@ class RegisterActivity : AppCompatActivity() {
             role = data
             if (data == "supplier") {
                 Glide.with(this)
-                    .load(R.drawable.supplier_icon)
+                    .load(R.drawable.supplier_icon_2)
                     .into(binding.logo)
                 binding.apply {
                     register.text = getString(R.string.register_supplier)

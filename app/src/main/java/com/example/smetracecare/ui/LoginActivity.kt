@@ -1,6 +1,5 @@
 package com.example.smetracecare.ui
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
@@ -40,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
             role = data
             if (data == "supplier") {
                 Glide.with(this)
-                    .load(R.drawable.supplier_icon)
+                    .load(R.drawable.supplier_icon_2)
                     .into(binding.logo)
                 binding.apply {
                     login.text = getString(R.string.login_supplier)

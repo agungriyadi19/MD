@@ -44,7 +44,7 @@
                     android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:backgroundTint="@color/transparent"
-                    android:src="@drawable/supplier_icon"
+                    android:src="@drawable/supplier_icon_2"
                     android:contentDescription="@string/profile" />
             </LinearLayout>
 
