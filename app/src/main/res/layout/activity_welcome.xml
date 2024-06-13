@@ -144,7 +144,7 @@
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:contentDescription="@string/supplier"
-                            android:src="@drawable/supplier_icon_2"
+                            android:src="@drawable/supplier_icon"
                             app:layout_constraintHorizontal_bias="0.497"
                             android:layout_gravity="center"/>
 
@@ -173,7 +173,7 @@
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:contentDescription="@string/umkm_batik"
-                            android:src="@drawable/umkm_icon"
+                            android:src="@drawable/umkm_icon2"
                             android:layout_gravity="center"/>
 
                         <TextView

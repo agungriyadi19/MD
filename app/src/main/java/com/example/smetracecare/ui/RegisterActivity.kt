@@ -38,7 +38,7 @@ class RegisterActivity : AppCompatActivity() {
             role = data
             if (data == "supplier") {
                 Glide.with(this)
-                    .load(R.drawable.supplier_icon_2)
+                    .load(R.drawable.supplier_icon)
                     .into(binding.logo)
                 binding.apply {
                     register.text = getString(R.string.register_supplier)
@@ -46,7 +46,7 @@ class RegisterActivity : AppCompatActivity() {
             }
             if (data == "umkm") {
                 Glide.with(this)
-                    .load(R.drawable.umkm_icon)
+                    .load(R.drawable.umkm_icon2)
                     .into(binding.logo)
                 binding.apply {
                     register.text = getString(R.string.register_sme)

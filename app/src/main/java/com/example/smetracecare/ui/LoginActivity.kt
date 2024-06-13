@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
             role = data
             if (data == "supplier") {
                 Glide.with(this)
-                    .load(R.drawable.supplier_icon_2)
+                    .load(R.drawable.supplier_icon)
                     .into(binding.logo)
                 binding.apply {
                     login.text = getString(R.string.login_supplier)
@@ -47,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
             }
             if (data == "umkm") {
                 Glide.with(this)
-                    .load(R.drawable.umkm_icon)
+                    .load(R.drawable.umkm_icon2)
                     .into(binding.logo)
                 binding.apply {
                     login.text = getString(R.string.login_sme)
