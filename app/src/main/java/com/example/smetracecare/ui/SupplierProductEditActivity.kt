@@ -28,7 +28,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.smetracecare.R
-import com.example.smetracecare.data.DataAddMaterial
 import com.example.smetracecare.data.MaterialDetail
 import com.example.smetracecare.data.SharedPreferences
 import com.example.smetracecare.data.dataStore
@@ -147,7 +146,7 @@ class SupplierProductEditActivity : AppCompatActivity() {
 
     private fun setupButtonClickListeners() {
         binding.btnBack.setOnClickListener {
-            startActivity(Intent(this, SupplierHomeActivity::class.java))
+            startActivity(Intent(this, SupplierHomeFragment::class.java))
         }
 
         binding.buttonCamera.setOnClickListener {
@@ -262,7 +261,7 @@ class SupplierProductEditActivity : AppCompatActivity() {
             )
 
         }
-        val intent = Intent(this, SupplierHomeActivity::class.java)
+        val intent = Intent(this, SupplierHomeFragment::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
         finish()
@@ -343,7 +342,7 @@ class SupplierProductEditActivity : AppCompatActivity() {
             StringBuilder(getString(R.string.message)).append(msg),
             Toast.LENGTH_SHORT
         ).show()
-        val intent = Intent(this@SupplierProductEditActivity, SupplierHomeActivity::class.java)
+        val intent = Intent(this@SupplierProductEditActivity, SupplierHomeFragment::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
     }

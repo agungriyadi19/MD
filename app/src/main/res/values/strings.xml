@@ -101,7 +101,10 @@
     <string name="upload_pembatik_umkm">Upload Pembatik</string>
     <string name="profile">Profile</string>
     <string name="add_item">Add Item</string>
-    <string name="supplier_name">Supplier Name</string>
+    <string name="supplier_name">List Supplier</string>
+    <string name="product_name">List Product</string>
+    <string name="pembatik_name">List Pembatik</string>
+    <string name="profile_name">Profil</string>
     <string name="item_name">Item Name</string>
     <string name="item_image">Item Image</string>
     <string name="detailProduct">Detail Product</string>
@@ -174,5 +177,7 @@
     <string name="message">Pesan</string>
     <string name="uploadWarning">Masukan gambar terlebih dahulu</string>
     <string name="uploadDescWarning">Masukan Deskripsi</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

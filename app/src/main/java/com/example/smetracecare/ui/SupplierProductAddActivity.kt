@@ -25,7 +25,6 @@ import androidx.core.content.FileProvider
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.smetracecare.R
-import com.example.smetracecare.data.DataAddMaterial
 import com.example.smetracecare.data.SharedPreferences
 import com.example.smetracecare.data.dataStore
 import com.example.smetracecare.viewModel.DataStoreViewModel
@@ -126,7 +125,7 @@ class SupplierProductAddActivity : AppCompatActivity() {
 
     private fun setupButtonClickListeners() {
         binding.btnBack.setOnClickListener {
-            startActivity(Intent(this, SupplierHomeActivity::class.java))
+            startActivity(Intent(this, SupplierHomeFragment::class.java))
         }
 
         binding.buttonCamera.setOnClickListener {
@@ -200,7 +199,7 @@ class SupplierProductAddActivity : AppCompatActivity() {
                 pricePart
             )
         }
-        val intent = Intent(this, SupplierHomeActivity::class.java)
+        val intent = Intent(this, SupplierHomeFragment::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
         finish()
@@ -281,7 +280,7 @@ class SupplierProductAddActivity : AppCompatActivity() {
             StringBuilder(getString(R.string.message)).append(msg),
             Toast.LENGTH_SHORT
         ).show()
-        val intent = Intent(this@SupplierProductAddActivity, SupplierHomeActivity::class.java)
+        val intent = Intent(this@SupplierProductAddActivity, SupplierHomeFragment::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
     }

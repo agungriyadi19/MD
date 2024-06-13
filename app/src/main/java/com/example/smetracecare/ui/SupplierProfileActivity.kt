@@ -75,7 +75,7 @@ class SupplierProfileActivity : AppCompatActivity() {
 
     private fun onClicked() {
         binding.btnBack.setOnClickListener() {
-            startActivity(Intent(this, SupplierHomeActivity::class.java))
+            startActivity(Intent(this, SupplierHomeFragment::class.java))
         }
 
         binding.editProfileButton.setOnClickListener() {

@@ -5,14 +5,16 @@
     <queries>
         <intent>
             <action android:name="android.intent.action.VIEW" />
+
             <category android:name="android.intent.category.BROWSABLE" />
+
             <data android:scheme="https" />
         </intent>
     </queries>
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
 
     <uses-permission
@@ -32,6 +34,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SMETraceCare"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.PembatikHomeFragment"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.DetailProductUmkmActivity"
             android:exported="false" />
@@ -57,7 +65,7 @@
             android:name=".ui.UploadProductUmkmActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.SupplierHomeActivity"
+            android:name=".ui.SupplierHomeFragment"
             android:exported="false"
             android:theme="@style/Theme.SMETraceCare" />
         <activity

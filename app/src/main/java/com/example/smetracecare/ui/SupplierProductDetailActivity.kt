@@ -15,7 +15,6 @@ import com.example.smetracecare.data.SharedPreferences
 import com.example.smetracecare.data.dataStore
 import com.example.smetracecare.databinding.ActivitySupplierProductDetailBinding
 import com.example.smetracecare.viewModel.DataStoreViewModel
-import com.example.smetracecare.viewModel.MaterialAddViewModel
 import com.example.smetracecare.viewModel.MaterialDeleteViewModel
 import com.example.smetracecare.viewModel.ViewModelFactory
 import java.text.DecimalFormat
@@ -51,7 +50,7 @@ class SupplierProductDetailActivity : AppCompatActivity() {
         })
 
         binding.btnBack.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(this@SupplierProductDetailActivity, SupplierHomeActivity::class.java))
+            startActivity(Intent(this@SupplierProductDetailActivity, SupplierHomeFragment::class.java))
         })
         var materialId = detailStory.materialId.substring(9)
         binding.buttonDelete.setOnClickListener {
@@ -66,7 +65,7 @@ class SupplierProductDetailActivity : AppCompatActivity() {
             .setPositiveButton("Ya") { dialog, which ->
                 // Aksi penghapusan di sini
                 materialDeleteViewModel.DeleteMaterial(token, materialId)
-                val intent = Intent(this, SupplierHomeActivity::class.java)
+                val intent = Intent(this, SupplierHomeFragment::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
                 finish()

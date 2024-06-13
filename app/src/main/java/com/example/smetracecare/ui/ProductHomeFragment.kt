@@ -4,58 +4,85 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.smetracecare.R
 import com.example.smetracecare.adapter.ListMaterialAdapter
 import com.example.smetracecare.data.MaterialDetail
 import com.example.smetracecare.data.SharedPreferences
-import com.example.smetracecare.data.dataStore
-import com.example.smetracecare.databinding.ActivitySupplierHomeBinding
+import com.example.smetracecare.databinding.FragmentProductHomeBinding
+import com.example.smetracecare.databinding.FragmentSupplierHomeBinding
 import com.example.smetracecare.viewModel.DataStoreViewModel
 import com.example.smetracecare.viewModel.MaterialViewModel
 import com.example.smetracecare.viewModel.ViewModelFactory
 
-class SupplierHomeActivity : AppCompatActivity() {
-    private lateinit var preferences: SharedPreferences
+class ProductHomeFragment : Fragment() {
 
-    private lateinit var binding: ActivitySupplierHomeBinding
+    private var _binding: FragmentProductHomeBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var preferences: SharedPreferences
     private val materialViewModel: MaterialViewModel by lazy {
         ViewModelProvider(this)[MaterialViewModel::class.java]
     }
-    override fun onCreate(savedInstanceState: Bundle?) {
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                AlertDialog.Builder(requireContext()).apply {
+                    setMessage("Are you sure want to exit?")
+                    setPositiveButton("Yes") { _, _ ->
+                        activity?.moveTaskToBack(true)
+                        activity?.finish()
+                    }
+                    setNegativeButton("No", null)
+                }.show()
+            }
+        })
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentProductHomeBinding.inflate(inflater, container, false)
+
         super.onCreate(savedInstanceState)
-        preferences = SharedPreferences.getInstance(dataStore)
-        binding = ActivitySupplierHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
         onClicked()
 
         val dataStoreViewModel = ViewModelProvider(this, ViewModelFactory(preferences))[DataStoreViewModel::class.java]
-        dataStoreViewModel.getName().observe(this) { data ->
+        dataStoreViewModel.getName().observe(viewLifecycleOwner) { data ->
             binding.apply {
                 tvSupplierName.text = data
             }
         }
-        dataStoreViewModel.getToken().observe(this) { token ->
-            dataStoreViewModel.getUserID().observe(this) { userId ->
+        dataStoreViewModel.getToken().observe(viewLifecycleOwner) { token ->
+            dataStoreViewModel.getUserID().observe(viewLifecycleOwner) { userId ->
                 materialViewModel.GetMaterial(token, userId)
             }
         }
-        materialViewModel.loading.observe(this) {
+        materialViewModel.loading.observe(viewLifecycleOwner) {
             onLoading(it)
         }
         Log.d("ini material", materialViewModel.material.toString())
 
-        materialViewModel.message.observe(this) {
+        materialViewModel.message.observe(viewLifecycleOwner) {
 //            setDataMaterial(materialViewModel.material)
             showToast(it)
         }
-        materialViewModel.material.observe(this) { materialList ->
+        materialViewModel.material.observe(viewLifecycleOwner) { materialList ->
             Log.d("SupplierHomeActivity", "Data updated: $materialList")
             setDataMaterial(materialList)
         }
+        return binding.root
     }
 
     private fun onLoading(it: Boolean) {
@@ -64,11 +91,11 @@ class SupplierHomeActivity : AppCompatActivity() {
 
     private fun setDataMaterial(material: List<MaterialDetail>) {
         val adapter = ListMaterialAdapter(material)
-        binding.rvStories.layoutManager = LinearLayoutManager(this)
+        binding.rvStories.layoutManager = LinearLayoutManager(context)
         binding.rvStories.adapter = adapter
         adapter.setOnItemClickCallback(object : ListMaterialAdapter.OnItemClickCallback {
             override fun onItemClicked(data: MaterialDetail) {
-                val intent = Intent(this@SupplierHomeActivity, SupplierProductDetailActivity::class.java)
+                val intent = Intent(context, SupplierProductDetailActivity::class.java)
                 intent.putExtra(SupplierProductDetailActivity.EXTRA_DATA, data)
                 startActivity(intent)
             }
@@ -76,18 +103,13 @@ class SupplierHomeActivity : AppCompatActivity() {
     }
     private fun showToast(msg: String) {
         if (materialViewModel.isError) {
-            Toast.makeText(this, "${getString(R.string.error_load)} $msg", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "${getString(R.string.error_load)} $msg", Toast.LENGTH_LONG).show()
         }
     }
 
     private fun onClicked() {
         binding.btnAddProduct.setOnClickListener {
-            startActivity(Intent(this, SupplierProductAddActivity::class.java))
-        }
-
-        binding.btnProfile.setOnClickListener() {
-            startActivity(Intent(this, SupplierProfileActivity::class.java))
+            startActivity(Intent(context, UploadProductUmkmActivity::class.java))
         }
     }
-
 }
