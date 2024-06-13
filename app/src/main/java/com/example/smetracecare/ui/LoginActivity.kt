@@ -1,5 +1,6 @@
 package com.example.smetracecare.ui
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
@@ -127,12 +128,12 @@ class LoginActivity : AppCompatActivity() {
             val dataStoreViewModel = ViewModelProvider(this, ViewModelFactory(preferences))[DataStoreViewModel::class.java]
             dataStoreViewModel.getRole().observe(this) { data ->
                 if (data == "supplier") {
-                    val intent = Intent(this@LoginActivity, SupplierHomeActivity::class.java)
+                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(intent)
                 }
                 if (data == "umkm") {
                     // UMKM Page
-                    val intent = Intent(this@LoginActivity, SupplierHomeActivity::class.java)
+                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(intent)
                 }
             }
