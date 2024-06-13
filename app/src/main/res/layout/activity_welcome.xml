@@ -201,7 +201,7 @@
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:contentDescription="@string/konsumer"
-                            android:src="@drawable/visitor_icon"
+                            android:src="@drawable/visitor_icon2"
                             android:layout_gravity="center"/>
 
                         <TextView
