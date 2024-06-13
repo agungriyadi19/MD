@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/home"
+        android:title="@string/supplier_name" />
+
+    <item
+        android:id="@+id/navigation_product"
+        android:icon="@drawable/product"
+        android:title="@string/product_name" />
+
+    <item
+        android:id="@+id/navigation_pembatik"
+        android:icon="@drawable/pembatik"
+        android:title="@string/pembatik_name" />
+
+    <item
+        android:id="@+id/navigation_notifications"
+        android:icon="@drawable/profile"
+        android:title="@string/profile_name" />
+
+</menu>

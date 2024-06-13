@@ -2,27 +2,70 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.smetracecare.ui.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-
+        android:id="@+id/navigation_home"
+        android:name="com.example.smetracecare.ui.SupplierHomeFragment"
+        android:label="@string/supplier_name"
+        tools:layout="@layout/fragment_supplier_home" >
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_navigation_home_to_navigation_product"
+            app:destination="@id/navigation_product" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_pembatik"
+            app:destination="@id/navigation_pembatik" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
     </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.smetracecare.ui.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
 
+    <fragment
+        android:id="@+id/navigation_product"
+        android:name="com.example.smetracecare.ui.ProductHomeFragment"
+        android:label="@string/product_name"
+        tools:layout="@layout/fragment_product_home" >
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_navigation_product_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_product_to_navigation_pembatik"
+            app:destination="@id/navigation_pembatik" />
+        <action
+            android:id="@+id/action_navigation_product_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_pembatik"
+        android:name="com.example.smetracecare.ui.PembatikHomeFragment"
+        android:label="@string/pembatik_name"
+        tools:layout="@layout/fragment_pembatik_home" >
+        <action
+            android:id="@+id/action_navigation_pembatik_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_pembatik_to_navigation_product"
+            app:destination="@id/navigation_product" />
+        <action
+            android:id="@+id/action_navigation_pembatik_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.smetracecare.ui.ProfileHomeFragment"
+        android:label="@string/profile_name"
+        tools:layout="@layout/fragment_profile_home" >
+        <action
+            android:id="@+id/action_navigation_profile_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_profile_to_navigation_product"
+            app:destination="@id/navigation_product" />
+        <action
+            android:id="@+id/action_navigation_profile_to_navigation_pembatik"
+            app:destination="@id/navigation_pembatik" />
     </fragment>
 </navigation>
