@@ -40,11 +40,12 @@
 
                 <ImageButton
                     android:id="@+id/btnProfile"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:backgroundTint="@color/transparent"
                     android:contentDescription="@string/profile"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/supplier_icon" />
 
 
