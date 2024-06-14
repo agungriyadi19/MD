@@ -58,9 +58,9 @@
         <item name="itemTextAppearanceInactive">@style/InactiveText</item>
     </style>
     <style name="ActiveText">
-        <item name="android:textColor">@color/md_theme_onPrimary</item>
+        <item name="android:textColor">@color/secondary</item>
     </style>
     <style name="InactiveText">
-        <item name="android:textColor">@color/md_theme_secondary</item>
+        <item name="android:textColor">@color/primary</item>
     </style>
 </resources>

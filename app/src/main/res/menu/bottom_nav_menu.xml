@@ -17,7 +17,7 @@
         android:title="@string/pembatik_name" />
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_profile"
         android:icon="@drawable/profile"
         android:title="@string/profile_name" />
 

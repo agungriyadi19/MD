@@ -250,7 +250,7 @@ class SupplierProductEditActivity : AppCompatActivity() {
                 binding.edEditProductDesc.text.toString()
                     .toRequestBody("text/plain".toMediaType())
             materialEditViewModel.editMaterial(
-                detailStory.materialId.substring(9),
+                detailStory.materialId.substringAfter('-'),
                 imgMultiPart,
                 token,
                 namePart,

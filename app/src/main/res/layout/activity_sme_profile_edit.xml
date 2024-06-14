@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tertiary"
+    tools:context=".ui.SmeProfileEditActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.SmeProfileEditActivity">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/tertiary"
+            tools:ignore="MissingConstraints">
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/transparent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/baseline_arrow_back_24" />
+
+            <TextView
+                android:id="@+id/detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/primary"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:text="@string/editProfile" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_sme_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:text="@string/name"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/primary"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <EditText
+            android:id="@+id/ed_add_sme_name"
+            android:layout_marginTop="4dp"
+            android:autofillHints="Description"
+            android:layout_marginHorizontal="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/textbox_background"
+            android:inputType="text"
+            android:hint="@string/name"
+            android:textColorHint="@color/grey"
+            android:textColor="@color/primary"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sme_name"
+            app:layout_constraintHorizontal_bias="0.0"
+            tools:ignore="LabelFor,RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/tv_sme_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/email"
+            android:textSize="14sp"
+            android:textColor="@color/primary"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ed_add_sme_name" />
+
+        <EditText
+            android:id="@+id/ed_add_sme_email"
+            android:layout_marginTop="4dp"
+            android:autofillHints="Description"
+            android:layout_marginHorizontal="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:inputType="textEmailAddress"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/textbox_background"
+            android:hint="@string/email"
+            android:textColorHint="@color/grey"
+            android:textColor="@color/primary"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sme_email"
+            app:layout_constraintHorizontal_bias="0.0"
+            tools:ignore="LabelFor,RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/tv_sme_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/phone"
+            android:textColor="@color/primary"
+            android:textSize="14sp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ed_add_sme_email" />
+
+        <EditText
+            android:id="@+id/ed_add_sme_phone"
+            android:layout_marginTop="4dp"
+            android:autofillHints="Description"
+            android:layout_marginHorizontal="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:inputType="phone"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/textbox_background"
+            android:textColorHint="@color/grey"
+            android:textColor="@color/primary"
+            android:hint="@string/phone"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sme_phone"
+            app:layout_constraintHorizontal_bias="0.0"
+            tools:ignore="LabelFor,RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/tv_sme_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/address"
+            android:textSize="14sp"
+            android:textColor="@color/primary"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ed_add_sme_phone" />
+
+        <EditText
+            android:id="@+id/ed_add_sme_address"
+            android:layout_marginTop="4dp"
+            android:autofillHints="Description"
+            android:layout_marginHorizontal="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="16dp"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:background="@drawable/textbox_background"
+            android:textColorHint="@color/grey"
+            android:gravity="top|left"
+            android:inputType="textMultiLine"
+            android:textColor="@color/primary"
+            android:hint="@string/address"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sme_address"
+            app:layout_constraintHorizontal_bias="0.0"
+            tools:ignore="LabelFor,RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/tv_sme_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/productDesc"
+            android:textColor="@color/primary"
+            android:textSize="14sp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ed_add_sme_address" />
+
+        <EditText
+            android:id="@+id/ed_add_sme_desc"
+            android:layout_marginTop="4dp"
+            android:autofillHints="Description"
+            android:layout_marginHorizontal="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/primary"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:background="@drawable/textbox_background"
+            android:hint="@string/productDesc"
+            android:textColorHint="@color/grey"
+            android:gravity="top|left"
+            android:inputType="textMultiLine"
+            app:layout_constraintTop_toBottomOf="@+id/tv_sme_desc"
+            app:layout_constraintHorizontal_bias="0.0"
+            tools:ignore="LabelFor,RtlHardcoded" />
+
+        <Button
+            android:id="@+id/addProductButton"
+            android:layout_marginHorizontal="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:text="@string/save"
+            android:backgroundTint="@color/secondary"
+            android:textColor="@color/white2"
+            app:layout_constraintTop_toBottomOf="@+id/ed_add_sme_desc"
+            app:layout_constraintHorizontal_bias="0.0"/>
+
+        <TextView
+            android:id="@+id/button_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:text="@string/space"
+            android:textStyle="bold"
+            android:textColor="@color/primary"
+            app:layout_constraintTop_toBottomOf="@+id/addProductButton"
+            app:layout_constraintStart_toStartOf="@+id/addProductButton"
+            app:layout_constraintEnd_toEndOf="@+id/addProductButton" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -128,7 +128,7 @@ class LoginActivity : AppCompatActivity() {
             val dataStoreViewModel = ViewModelProvider(this, ViewModelFactory(preferences))[DataStoreViewModel::class.java]
             dataStoreViewModel.getRole().observe(this) { data ->
                 if (data == "supplier") {
-                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                    val intent = Intent(this@LoginActivity, SupplierHomeActivity::class.java)
                     startActivity(intent)
                 }
                 if (data == "umkm") {

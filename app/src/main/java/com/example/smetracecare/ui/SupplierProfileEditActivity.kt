@@ -13,7 +13,7 @@ import com.example.smetracecare.viewModel.ViewModelFactory
 import com.example.smetracecare.data.dataStore
 
 import com.example.smetracecare.data.SharedPreferences
-import com.example.smetracecare.data.UpdateSupplierProfileRequest
+import com.example.smetracecare.data.UpdateProfileRequest
 
 class SupplierProfileEditActivity : AppCompatActivity() {
 
@@ -52,7 +52,7 @@ class SupplierProfileEditActivity : AppCompatActivity() {
                 val description = edAddSupplierDesc.text.toString().trim()
 
                 if (name.isNotEmpty() && email.isNotEmpty() && phone.isNotEmpty() && address.isNotEmpty() && description.isNotEmpty()) {
-                    val request = UpdateSupplierProfileRequest(name, email, phone, address, description)
+                    val request = UpdateProfileRequest(name, email, phone, address, description)
                     supplierProfileEditViewModel.updateSupplierProfile(token, userId, request)
                 } else {
                     Toast.makeText(this@SupplierProfileEditActivity, "Please fill all fields", Toast.LENGTH_SHORT).show()

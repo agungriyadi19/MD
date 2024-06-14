@@ -13,7 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.smetracecare.R
 import com.example.smetracecare.databinding.ActivityResultScanBatikBinding
-import com.example.smetracecare.ml.Model
+import com.example.smetracecare.ml.Model3
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
@@ -55,7 +55,7 @@ class ResultScanBatikActivity : AppCompatActivity() {
             // Ensure the bitmap is in ARGB_8888 format
             val argbBitmap = resizedBitmap.copy(Bitmap.Config.ARGB_8888, true)
 
-            val model = Model.newInstance(this)
+            val model = Model3.newInstance(this)
 
             val tensorImage = TensorImage(DataType.FLOAT32)
             tensorImage.load(argbBitmap)

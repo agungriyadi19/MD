@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.smetracecare.R
 import com.example.smetracecare.data.ErrorResponse
-import com.example.smetracecare.data.GetSupplierProfileResponse
+import com.example.smetracecare.data.GetProfileResponse
 import com.example.smetracecare.retrofit.ApiConfig
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -22,14 +22,14 @@ class SupplierProfileViewModel : ViewModel() {
     private val _message = MutableLiveData<String>()
     val message: LiveData<String> = _message
 
-    private val _userProfile = MutableLiveData<GetSupplierProfileResponse>()
-    val userProfile: LiveData<GetSupplierProfileResponse> = _userProfile
+    private val _userProfile = MutableLiveData<GetProfileResponse>()
+    val userProfile: LiveData<GetProfileResponse> = _userProfile
 
     fun getSupplierProfileResponse(token:String, userId: String) {
         _loading.value = true
         val api = ApiConfig.getApiService().getSupplierProfile(token, userId)
-        api.enqueue(object : retrofit2.Callback<GetSupplierProfileResponse> {
-            override fun onResponse(call: Call<GetSupplierProfileResponse>, response: Response<GetSupplierProfileResponse>) {
+        api.enqueue(object : retrofit2.Callback<GetProfileResponse> {
+            override fun onResponse(call: Call<GetProfileResponse>, response: Response<GetProfileResponse>) {
                 _loading.value = false
                 val responseBody = response.body()
                 Log.d("Profile response", responseBody.toString())
@@ -57,7 +57,7 @@ class SupplierProfileViewModel : ViewModel() {
                 }
             }
 
-            override fun onFailure(call: Call<GetSupplierProfileResponse>, t: Throwable) {
+            override fun onFailure(call: Call<GetProfileResponse>, t: Throwable) {
                 isError = true
                 _loading.value = false
                 _message.value = R.string.error_message.toString() + t.message.toString()

@@ -52,7 +52,7 @@ class SupplierProductDetailActivity : AppCompatActivity() {
         binding.btnBack.setOnClickListener(View.OnClickListener {
             startActivity(Intent(this@SupplierProductDetailActivity, SupplierHomeFragment::class.java))
         })
-        var materialId = detailStory.materialId.substring(9)
+        var materialId = detailStory.materialId.substringAfter('-')
         binding.buttonDelete.setOnClickListener {
             showDeleteConfirmationDialog(materialId)
         }

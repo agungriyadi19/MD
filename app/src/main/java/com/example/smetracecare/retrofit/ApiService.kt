@@ -5,11 +5,13 @@ import com.example.smetracecare.data.DataLogin
 import com.example.smetracecare.data.DataRegister
 import com.example.smetracecare.data.DetailResponse
 import com.example.smetracecare.data.LoginResponse
-import com.example.smetracecare.data.GetSupplierProfileResponse
 import com.example.smetracecare.data.GetMaterial
+import com.example.smetracecare.data.GetProfileResponse
+import com.example.smetracecare.data.GetSmeMaterial
+import com.example.smetracecare.data.GetSmeResponse
 import com.example.smetracecare.data.ResponseAddMaterial
-import com.example.smetracecare.data.UpdateSupplierProfileRequest
-import com.example.smetracecare.data.UpdateSupplierProfileResponse
+import com.example.smetracecare.data.UpdateProfileRequest
+import com.example.smetracecare.data.UpdateProfileResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -35,15 +37,33 @@ interface ApiService {
     fun getSupplierProfile(
         @Header("authorization") token: String,
         @Path("userId") userId: String
-    ): Call<GetSupplierProfileResponse>
+    ): Call<GetProfileResponse>
+
+    @GET("umkm/{userId}")
+    fun getSmeProfile(
+        @Header("authorization") token: String,
+        @Path("userId") userId: String
+    ): Call<GetSmeResponse>
 
     @PUT("suppliers/{userId}")
     fun updateSupplierProfile(
         @Header("authorization") token: String,
         @Path("userId") userId: String,
-        @Body request: UpdateSupplierProfileRequest
-    ): Call<UpdateSupplierProfileResponse>
+        @Body request: UpdateProfileRequest
+    ): Call<UpdateProfileResponse>
 
+    @PUT("umkm/{userId}")
+    fun updateSmeProfile(
+        @Header("authorization") token: String,
+        @Path("userId") userId: String,
+        @Body request: UpdateProfileRequest
+    ): Call<UpdateProfileResponse>
+
+
+    @GET("barang_mentah")
+    fun getMaterialSme(
+        @Header("authorization") token: String
+    ): Call<GetSmeMaterial>
 
     @GET("barang_mentah/supplier/{userId}")
     fun getMaterial(

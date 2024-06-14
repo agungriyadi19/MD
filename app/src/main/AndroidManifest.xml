@@ -69,6 +69,10 @@
             android:exported="false"
             android:theme="@style/Theme.SMETraceCare" />
         <activity
+            android:name=".ui.SupplierHomeActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SMETraceCare" />
+        <activity
             android:name=".ui.SupplierProductAddActivity"
             android:exported="false"
             android:theme="@style/Theme.SMETraceCare" />
@@ -86,6 +90,22 @@
             android:theme="@style/Theme.SMETraceCare" />
         <activity
             android:name=".ui.SupplierProfileEditActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SMETraceCare" />
+        <activity
+            android:name=".ui.SmeProfileEditActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SMETraceCare" />
+        <activity
+            android:name=".ui.SmeMaterialDetailActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SMETraceCare" />
+        <activity
+            android:name=".ui.PembatikDetailActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SMETraceCare" />
+        <activity
+            android:name=".ui.PembatikAddActivity"
             android:exported="false"
             android:theme="@style/Theme.SMETraceCare" />
         <activity

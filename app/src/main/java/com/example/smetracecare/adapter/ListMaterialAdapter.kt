@@ -33,9 +33,14 @@ class ListMaterialAdapter(private val MaterialList: List<MaterialDetail>) :
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val listMaterial = MaterialList[position]
-        Glide.with(holder.itemView.context)
-            .load(decodeBase64ToBitmap(listMaterial.image))
-            .into(holder.photo)
+        val bitmap = decodeBase64ToBitmap(listMaterial.image)
+        if (bitmap != null) {
+            Glide.with(holder.itemView.context)
+                .load(bitmap)
+                .into(holder.photo)
+        } else {
+            holder.photo.setImageResource(R.drawable.ic_launcher_background) // Gambar placeholder jika decoding gagal
+        }
         holder.name.text = listMaterial.name
         holder.itemView.setOnClickListener {
             onItemClickCallback.onItemClicked(MaterialList[holder.adapterPosition])
