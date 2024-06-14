@@ -50,9 +50,8 @@ class ProfileHomeFragment : Fragment() {
             showDeleteConfirmationDialog()
         }
 
-        // Handle edit profile button click
-        binding.editProfileButton.setOnClickListener {
-            val intent = Intent(context, SmeProfileEditActivity::class.java)
+        binding.editProfileButton.setOnClickListener() {
+            val intent = Intent(requireContext(), SmeProfileEditActivity::class.java)
             startActivity(intent)
         }
     }
