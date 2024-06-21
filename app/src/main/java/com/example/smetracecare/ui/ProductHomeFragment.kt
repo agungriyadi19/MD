@@ -14,13 +14,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.smetracecare.R
-import com.example.smetracecare.adapter.ListMaterialAdapter
-import com.example.smetracecare.data.MaterialDetail
+import com.example.smetracecare.adapter.ListProductAdapter
+import com.example.smetracecare.data.ProductDetail
 import com.example.smetracecare.data.SharedPreferences
+import com.example.smetracecare.data.dataStore
 import com.example.smetracecare.databinding.FragmentProductHomeBinding
 import com.example.smetracecare.databinding.FragmentSupplierHomeBinding
 import com.example.smetracecare.viewModel.DataStoreViewModel
-import com.example.smetracecare.viewModel.MaterialViewModel
+import com.example.smetracecare.viewModel.ProductViewModel
 import com.example.smetracecare.viewModel.ViewModelFactory
 
 class ProductHomeFragment : Fragment() {
@@ -28,8 +29,8 @@ class ProductHomeFragment : Fragment() {
     private var _binding: FragmentProductHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var preferences: SharedPreferences
-    private val materialViewModel: MaterialViewModel by lazy {
-        ViewModelProvider(this)[MaterialViewModel::class.java]
+    private val productViewModel: ProductViewModel by lazy {
+        ViewModelProvider(this)[ProductViewModel::class.java]
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,6 +55,7 @@ class ProductHomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentProductHomeBinding.inflate(inflater, container, false)
+        preferences = SharedPreferences.getInstance(requireContext().dataStore)
 
         super.onCreate(savedInstanceState)
         onClicked()
@@ -66,21 +68,21 @@ class ProductHomeFragment : Fragment() {
         }
         dataStoreViewModel.getToken().observe(viewLifecycleOwner) { token ->
             dataStoreViewModel.getUserID().observe(viewLifecycleOwner) { userId ->
-                materialViewModel.GetMaterial(token, userId)
+                productViewModel.GetProduct(token, userId)
             }
         }
-        materialViewModel.loading.observe(viewLifecycleOwner) {
+        productViewModel.loading.observe(viewLifecycleOwner) {
             onLoading(it)
         }
-        Log.d("ini material", materialViewModel.material.toString())
+        Log.d("ini product", productViewModel.product.toString())
 
-        materialViewModel.message.observe(viewLifecycleOwner) {
-//            setDataMaterial(materialViewModel.material)
+        productViewModel.message.observe(viewLifecycleOwner) {
+//            setDataProduct(productViewModel.product)
             showToast(it)
         }
-        materialViewModel.material.observe(viewLifecycleOwner) { materialList ->
-            Log.d("SupplierHomeActivity", "Data updated: $materialList")
-            setDataMaterial(materialList)
+        productViewModel.product.observe(viewLifecycleOwner) { productList ->
+            Log.d("SupplierHomeActivity", "Data updated: $productList")
+            setDataProduct(productList)
         }
         return binding.root
     }
@@ -89,12 +91,12 @@ class ProductHomeFragment : Fragment() {
         binding.progressBar.visibility = if (it) View.VISIBLE else View.GONE
     }
 
-    private fun setDataMaterial(material: List<MaterialDetail>) {
-        val adapter = ListMaterialAdapter(material)
+    private fun setDataProduct(product: List<ProductDetail>) {
+        val adapter = ListProductAdapter(product)
         binding.rvStories.layoutManager = LinearLayoutManager(context)
         binding.rvStories.adapter = adapter
-        adapter.setOnItemClickCallback(object : ListMaterialAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: MaterialDetail) {
+        adapter.setOnItemClickCallback(object : ListProductAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: ProductDetail) {
                 val intent = Intent(context, SupplierProductDetailActivity::class.java)
                 intent.putExtra(SupplierProductDetailActivity.EXTRA_DATA, data)
                 startActivity(intent)
@@ -102,7 +104,7 @@ class ProductHomeFragment : Fragment() {
         })
     }
     private fun showToast(msg: String) {
-        if (materialViewModel.isError) {
+        if (productViewModel.isError) {
             Toast.makeText(context, "${getString(R.string.error_load)} $msg", Toast.LENGTH_LONG).show()
         }
     }

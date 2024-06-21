@@ -52,15 +52,4 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
-
-    <style name="NavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
-        <item name="itemTextAppearanceActive">@style/ActiveText</item>
-        <item name="itemTextAppearanceInactive">@style/InactiveText</item>
-    </style>
-    <style name="ActiveText">
-        <item name="android:textColor">@color/secondary</item>
-    </style>
-    <style name="InactiveText">
-        <item name="android:textColor">@color/primary</item>
-    </style>
 </resources>

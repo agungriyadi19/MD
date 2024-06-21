@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.smetracecare.R
 import com.example.smetracecare.data.MaterialDetail
 
-class ListMaterialAdapter(private val MaterialList: List<MaterialDetail>) :
+class ListMaterialAdapter(private val materialList: List<MaterialDetail>) :
     RecyclerView.Adapter<ListMaterialAdapter.ListViewHolder>() {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
@@ -32,7 +32,7 @@ class ListMaterialAdapter(private val MaterialList: List<MaterialDetail>) :
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val listMaterial = MaterialList[position]
+        val listMaterial = materialList[position]
         val bitmap = decodeBase64ToBitmap(listMaterial.image)
         if (bitmap != null) {
             Glide.with(holder.itemView.context)
@@ -43,7 +43,7 @@ class ListMaterialAdapter(private val MaterialList: List<MaterialDetail>) :
         }
         holder.name.text = listMaterial.name
         holder.itemView.setOnClickListener {
-            onItemClickCallback.onItemClicked(MaterialList[holder.adapterPosition])
+            onItemClickCallback.onItemClicked(materialList[holder.adapterPosition])
         }
     }
     fun decodeBase64ToBitmap(base64Str: String): Bitmap? {
@@ -60,5 +60,5 @@ class ListMaterialAdapter(private val MaterialList: List<MaterialDetail>) :
         return ListViewHolder(view)
     }
 
-    override fun getItemCount(): Int = MaterialList.size
+    override fun getItemCount(): Int = materialList.size
 }

@@ -18,7 +18,7 @@ class SmeProfileEditActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySmeProfileEditBinding
     private val preferences = SharedPreferences.getInstance(dataStore)
-    private val SmeProfileEditViewModel: SmeProfileEditViewModel by lazy {
+    private val smeProfileEditViewModel: SmeProfileEditViewModel by lazy {
         ViewModelProvider(this)[SmeProfileEditViewModel::class.java]
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +34,7 @@ class SmeProfileEditActivity : AppCompatActivity() {
         dataStoreViewModel.getToken().observe(this) { token ->
             dataStoreViewModel.getUserID().observe(this) { userId ->
                 setupUI(token, userId)
-                SmeProfileEditViewModel.getProfile(token, userId)
+                smeProfileEditViewModel.getProfile(token, userId)
             }
         }
 
@@ -52,7 +52,7 @@ class SmeProfileEditActivity : AppCompatActivity() {
 
                 if (name.isNotEmpty() && email.isNotEmpty() && phone.isNotEmpty() && address.isNotEmpty() && description.isNotEmpty()) {
                     val request = UpdateProfileRequest(name, email, phone, address, description)
-                    SmeProfileEditViewModel.updateProfile(token, userId, request)
+                    smeProfileEditViewModel.updateProfile(token, userId, request)
                 } else {
                     Toast.makeText(this@SmeProfileEditActivity, "Please fill all fields", Toast.LENGTH_SHORT).show()
                 }
@@ -65,7 +65,7 @@ class SmeProfileEditActivity : AppCompatActivity() {
     }
 
     private fun observeViewModel() {
-        SmeProfileEditViewModel.apply {
+        smeProfileEditViewModel.apply {
             loading.observe(this@SmeProfileEditActivity) { isLoading ->
                 // Show/hide loading indicator
             }

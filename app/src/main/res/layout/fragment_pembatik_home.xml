@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.SupplierHomeFragment">
+    tools:context=".ui.PembatikHomeFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -55,10 +55,11 @@
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnAddProduct"
+        android:id="@+id/btnAddPembatik"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="100dp"
         android:backgroundTint="@color/secondary"
         android:contentDescription="@string/add_item"
         android:src="@drawable/ic_add"

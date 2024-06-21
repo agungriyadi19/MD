@@ -34,9 +34,6 @@ class SmeProfileActivity : AppCompatActivity() {
             }
         }
         observeUserProfile()
-        binding.buttonLogout.setOnClickListener {
-            showDeleteConfirmationDialog()
-        }
     }
 
     private fun showDeleteConfirmationDialog() {
@@ -74,13 +71,13 @@ class SmeProfileActivity : AppCompatActivity() {
     }
 
     private fun onClicked() {
-        binding.btnBack.setOnClickListener() {
-            startActivity(Intent(this, SupplierHomeFragment::class.java))
+        binding.buttonLogout.setOnClickListener {
+            showDeleteConfirmationDialog()
         }
 
         binding.editProfileButton.setOnClickListener() {
             Log.d("test", "test")
-            startActivity(Intent(this, SupplierProfileEditActivity::class.java))
+            startActivity(Intent(this, SmeProfileEditActivity::class.java))
         }
     }
 }

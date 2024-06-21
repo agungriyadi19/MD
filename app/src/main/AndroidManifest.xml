@@ -77,6 +77,18 @@
             android:exported="false"
             android:theme="@style/Theme.SMETraceCare" />
         <activity
+            android:name=".ui.SmePembatikAddActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SMETraceCare" />
+        <activity
+            android:name=".ui.SmePembatikDetailActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SMETraceCare" />
+        <activity
+            android:name=".ui.SmePembatikEditActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SMETraceCare" />
+        <activity
             android:name=".ui.SupplierProductDetailActivity"
             android:exported="false"
             android:theme="@style/Theme.SMETraceCare" />
@@ -101,13 +113,15 @@
             android:exported="false"
             android:theme="@style/Theme.SMETraceCare" />
         <activity
-            android:name=".ui.PembatikDetailActivity"
+            android:name=".ui.SmePembatikDetailActivity"
             android:exported="false"
-            android:theme="@style/Theme.SMETraceCare" />
+            android:theme="@style/Theme.SMETraceCare"
+            tools:ignore="DuplicateActivity" />
         <activity
-            android:name=".ui.PembatikAddActivity"
+            android:name=".ui.SmePembatikAddActivity"
             android:exported="false"
-            android:theme="@style/Theme.SMETraceCare" />
+            android:theme="@style/Theme.SMETraceCare"
+            tools:ignore="DuplicateActivity" />
         <activity
             android:name=".ui.LoginActivity"
             android:exported="false"

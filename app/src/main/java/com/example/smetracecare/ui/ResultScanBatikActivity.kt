@@ -1,7 +1,6 @@
 package com.example.smetracecare.ui
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.net.Uri
@@ -13,7 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.smetracecare.R
 import com.example.smetracecare.databinding.ActivityResultScanBatikBinding
-import com.example.smetracecare.ml.Model3
+import com.example.smetracecare.ml.Model
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
@@ -55,7 +54,7 @@ class ResultScanBatikActivity : AppCompatActivity() {
             // Ensure the bitmap is in ARGB_8888 format
             val argbBitmap = resizedBitmap.copy(Bitmap.Config.ARGB_8888, true)
 
-            val model = Model3.newInstance(this)
+            val model = Model.newInstance(this)
 
             val tensorImage = TensorImage(DataType.FLOAT32)
             tensorImage.load(argbBitmap)
@@ -87,35 +86,28 @@ class ResultScanBatikActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n", "StringFormatInvalid")
     private fun showResults(outputFeature0: TensorBuffer) {
         val scores = outputFeature0.floatArray
-//        val labels = arrayOf("Label1", "Label2", "Label3") // Replace with your actual labels
         Log.d("hasil", scores.contentToString())
         val probabilities = listOf(
             scores.contentToString()
         )
-//        val labels = arrayOf(
-//            "Label1", "Label2", "Label3", "Label4", "Label5",
-//            "Label6", "Label7", "Label8", "Label9", "Label10",
-//            "Label11", "Label12"
-//        )
+
         val labels = arrayOf(
-            "Batik Tambal",
-            "Batik Sekar Jagad",
-            "Batik Poleng",
-            "Batik Parang",
-            "Batik Pala",
-            "Batik Megamendung",
-            "Batik Lasem",
-            "Batik Kawung",
-            "Batik Insang",
-            "Batik Ikat Celup",
-            "Batik Dayak",
+            "Batik Betawi",
             "Batik Cendrawasih",
-//            "Batik Geblek Renteng",
-//            "Batik Betawi",
-//            "Batik Bali",
+            "BatikDayak",
+            "Batik Geblek Renteng",
+            "Batik Ikat Celup",
+            "Batik Insang",
+            "Batik Kawung",
+            "Batik Megamendung",
+            "Batik Pala",
+            "Batik Perang",
+            "atik Poleng",
+            "Batik Sekar Jagad",
+            "Batik Tambal"
         )
 
-// Ensure that probabilities and labels have the same size
+        // Ensure that probabilities and labels have the same size
         if (probabilities.size == labels.size) {
             val result = probabilities.zip(labels)
             for ((probability, label) in result) {
@@ -146,7 +138,6 @@ class ResultScanBatikActivity : AppCompatActivity() {
             } else {
                 binding.resultText.text = "Gambar tidak terdeteksi"
             }
-
 
 //            val resultBuilder = StringBuilder()
 //            for (i in labels.indices) {

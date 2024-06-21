@@ -176,7 +176,7 @@ data class UpdateSmeProfileResponse(
 data class GetProduct(
 	var error: String,
 	var message: String,
-	var result: List<MaterialDetail>
+	var result: List<ProductDetail>
 )
 
 @Parcelize
@@ -201,25 +201,24 @@ data class DataAddProduct(
 data class ResponseAddProduct(
 	var error: String,
 	var message: String,
-	var result: MaterialDetail?
+	var result: ProductDetail?
 )
 
 
 data class GetPembatik(
 	var error: String,
 	var message: String,
-	var result: List<ProductDetail>
+	var result: List<PembatikDetail>
 )
 
 @Parcelize
 data class PembatikDetail (
-	var materialId: String,
+	var profileId: String,
 	var name: String,
 	var description: String,
 	var image: String,
-	var type: String,
-	var price: String,
-	var supplierId: String
+	var startedYear: String,
+	var smeId: String
 ) : Parcelable
 
 data class DataAddPembatik(
@@ -227,11 +226,11 @@ data class DataAddPembatik(
 	var description: String,
 	var image: String,
 	var startedYear: Int,
-	var supplierId: String
+	var smeId: String
 )
 
 data class ResponseAddPembatik(
 	var error: String,
 	var message: String,
-	var result: PembatikDetail?
+	var pematikId: Number
 )

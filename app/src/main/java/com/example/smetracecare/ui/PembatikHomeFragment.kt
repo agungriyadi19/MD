@@ -11,13 +11,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.smetracecare.R
-import com.example.smetracecare.adapter.ListMaterialAdapter
-import com.example.smetracecare.data.MaterialDetail
+import com.example.smetracecare.adapter.ListPembatikAdapter
+import com.example.smetracecare.data.PembatikDetail
 import com.example.smetracecare.data.SharedPreferences
 import com.example.smetracecare.data.dataStore
 import com.example.smetracecare.databinding.FragmentPembatikHomeBinding
 import com.example.smetracecare.viewModel.DataStoreViewModel
-import com.example.smetracecare.viewModel.SmeMaterialViewModel
+import com.example.smetracecare.viewModel.PembatikViewModel
 import com.example.smetracecare.viewModel.ViewModelFactory
 
 class PembatikHomeFragment : Fragment() {
@@ -25,8 +25,8 @@ class PembatikHomeFragment : Fragment() {
     private var _binding: FragmentPembatikHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var preferences: SharedPreferences
-    private val smeMaterialViewModel: SmeMaterialViewModel by lazy {
-        ViewModelProvider(this)[SmeMaterialViewModel::class.java]
+    private val smePembatikViewModel: PembatikViewModel by lazy {
+        ViewModelProvider(this)[PembatikViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -43,24 +43,25 @@ class PembatikHomeFragment : Fragment() {
         onClicked()
 
         val dataStoreViewModel = ViewModelProvider(this, ViewModelFactory(preferences))[DataStoreViewModel::class.java]
-
-        dataStoreViewModel.getToken().observe(viewLifecycleOwner) { token ->
-            if (token != null) {
-                smeMaterialViewModel.GetMaterialSme(token)
-            } else {
-                Log.e("PembatikHomeFragment", "Token is null")
+        dataStoreViewModel.getUserID().observe(viewLifecycleOwner) { userId ->
+            dataStoreViewModel.getToken().observe(viewLifecycleOwner) { token ->
+                if (token != null) {
+                    smePembatikViewModel.GetPembatik(token, userId)
+                } else {
+                    Log.e("PembatikHomeFragment", "Token is null")
+                }
             }
         }
-        smeMaterialViewModel.loading.observe(viewLifecycleOwner) {
+        smePembatikViewModel.loading.observe(viewLifecycleOwner) {
             onLoading(it)
         }
 
-        smeMaterialViewModel.message.observe(viewLifecycleOwner) {
+        smePembatikViewModel.message.observe(viewLifecycleOwner) {
             showToast(it)
         }
-        smeMaterialViewModel.material.observe(viewLifecycleOwner) { materialList ->
-            Log.d("PembatikHomeFragment", "Data updated: $materialList")
-            setDataMaterial(materialList)
+        smePembatikViewModel.pembatik.observe(viewLifecycleOwner) { pembatikList ->
+            Log.d("PembatikHomeFragment", "Data updated: $pembatikList")
+            setDataPembatik(pembatikList)
         }
         return binding.root
     }
@@ -69,28 +70,29 @@ class PembatikHomeFragment : Fragment() {
         binding.progressBar.visibility = if (it) View.VISIBLE else View.GONE
     }
 
-    private fun setDataMaterial(material: List<MaterialDetail>) {
-        val adapter = ListMaterialAdapter(material)
+    private fun setDataPembatik(pembatik: List<PembatikDetail>) {
+        val adapter = ListPembatikAdapter(pembatik)
         binding.rvStories.layoutManager = LinearLayoutManager(context)
         binding.rvStories.adapter = adapter
-        adapter.setOnItemClickCallback(object : ListMaterialAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: MaterialDetail) {
-                val intent = Intent(context, PembatikDetailActivity::class.java)
-                intent.putExtra(PembatikDetailActivity.EXTRA_DATA, data)
+        adapter.setOnItemClickCallback(object : ListPembatikAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: PembatikDetail) {
+                val intent = Intent(context, SmePembatikDetailActivity::class.java)
+                intent.putExtra(SmePembatikDetailActivity.EXTRA_DATA, data)
                 startActivity(intent)
             }
         })
     }
 
     private fun showToast(msg: String) {
-        if (smeMaterialViewModel.isError) {
+        if (smePembatikViewModel.isError) {
             Toast.makeText(context, "${getString(R.string.error_load)} $msg", Toast.LENGTH_LONG).show()
         }
     }
 
     private fun onClicked() {
-        binding.btnAddProduct.setOnClickListener {
-            startActivity(Intent(context, PembatikAddActivity::class.java))
+        binding.btnAddPembatik.setOnClickListener {
+            val intent = Intent(requireContext(), SmePembatikAddActivity::class.java)
+            startActivity(intent)
         }
     }
 }
